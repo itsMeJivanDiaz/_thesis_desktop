@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        CIMO Control Panel
+    </title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <link href="../assets/icons/fontawesome-free-5.15.3-web/css/all.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="../assets/images/logo.png">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body >
+    <script src="../assets/libs/jquery.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <!--<script src="eel.js"></script>-->
+    <div  class="bg_3 load_wrapper">
+        <img class="image_logo" src="../assets/images/logo.png">
+        <h1 class="wc_ltr fnt_clr_4">CIMO</h1>
+        <div class="lds-ellipsis">
+            <div>
+            </div>
+            <div>
+            </div>
+            <div>
+            </div>
+            <div>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper" id="scroll_1">
+        <div class="bg_3 body-container">
+            <section class="content content_bg1">
+                <img class="image_logo" src="../assets/images/logo.png">
+                <h1 class="wc_ltr fnt_clr_1">Hi, welcome to CIMO!</h1>
+                <p class="tg_ln fnt_clr_2">Crowd-counting with Integrative Mobile Application</p>
+                <br>
+                <br>
+                <button data-from="scroll_1" data-to="scroll_2" type="button" class="btn_1 fnt_clr_3 bg_1 hover_shdw mn_btn">
+                    <div class="btn_anim bg_4">
+                        Register
+                    </div>
+                </button>
+                <br>
+                <button data-action="scroll_3" type="button" id="lgn" class="btn_1 fnt_clr_3 bg_2 hover_shdw mn_btn">
+                    <div class="btn_anim bg_5">
+                        Log in
+                    </div> 
+                </button>
+            </section>
+        </div>
+    </div>
+    <div class="wrapper panel_2" id="scroll_2">
+        <div class="bg_3 body-container active">
+            <button data-value="" class="mn_btn" id="close"><i class="fas fa-times fnt_clr_3"></i></button>
+            <section class="content flex o-pad">
+                <div class="reg_box bg brpnt">
+                    
+                </div>
+                <div class="reg_box" id="rgstr_from_cont">
+                    <div id="form" class="bg_6">
+                        <form id="reg-form-id">
+                            <div class="form_header">
+                                <h1 class="wc_ltr_v2 fnt_clr_6">Registration Form</h1>
+                            </div>
+                            <div class="form-body">
+                                <div class="input-holder">
+                                    <section class="icon-box">
+                                        <i class="fas fa-building text-shadow-dark"></i>
+                                    </section>
+                                    <input required autocomplete="off" name="establishment-name" value="" class="fnt_clr_2" placeholder="Establishment Name">
+                                </div>
+                                <div class="input-holder">
+                                    <section class="icon-box">
+                                        <i class="fas fa-city text-shadow-dark"></i>
+                                    </section>
+                                    <input required autocomplete="off" name="city" id="city" class="fnt_clr_2" placeholder="City">
+                                </div>
+                                <div class="flex">
+                                    <div class="input-holder">
+                                        <section class="icon-box">
+                                            <i class="fas fa-road text-shadow-dark"></i>
+                                        </section>
+                                        <input required autocomplete="off" name="branch" id="branch" class="fnt_clr_2" placeholder="Street or Branch">
+                                    </div>
+                                    <div class="spacer"></div>
+                                    <div class="input-holder">
+                                        <section class="icon-box">
+                                            <i class="fas fa-sign text-shadow-dark"></i>
+                                        </section>
+                                        <input required autocomplete="off" name="brgy" id="brgy" class="fnt_clr_2" placeholder="Barangay or Area">
+                                    </div>
+                                </div>
+                                <div class="input-holder">
+                                    <section class="icon-box">
+                                        <i class="fas fa-map-marker-alt text-shadow-dark"></i>
+                                    </section>
+                                    <input required autocomplete="off" name="latlong" id="loc-input" class="fnt_clr_2" placeholder="Establishment Coordinates">
+                                    <button type="button" id="location"><i class="loc fas fa-map-marked-alt text-shadow-dark"></i></button>
+                                </div>
+                                <div class="input-holder">
+                                    <section class="icon-box">
+                                        <i class="fas fa-store text-shadow-dark"></i>
+                                    </section>
+                                    <select required autocomplete="off" name="establishment-type" class="fnt_clr_2" id="establishment-type">
+                                        <option value="" selected class="color-3">Establishment Type</option>
+                                        <option value="Fast food">Fast Food</option>
+                                        <option value="Supermarket">Supermarket</option>
+                                        <option value="Spplies">Supplies</option>
+                                    </select>
+                                </div>
+                                <div class="input-holder">
+                                    <section class="icon-box text-shadow-dark">
+                                        <i class="fas fa-user-tag"></i>
+                                    </section>
+                                    <input required autocomplete="off" name="username" id="user" class="fnt_clr_2" placeholder="Establishment Usercode">
+                                </div>
+                                <div class="input-holder">
+                                    <section class="icon-box text-shadow-dark">
+                                        <i class="fas fa-lock"></i>
+                                    </section>
+                                    <input required type="password" autocomplete="off" name="passoword" id="pass" class="fnt_clr_2" placeholder="Establishment Passcode">
+                                </div>
+                                <button id="reg_btn" type="button" class="btn_1 fnt_clr_3 bg_9">
+                                    Proceed
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div id="map-holder">
+        <button id="close-map"><i class="fas fa-times"></i></button>
+        <div id="map" ></div>
+    </div>
+    <script src="index.js">
+
+    </script>
+</body>
+</html>
