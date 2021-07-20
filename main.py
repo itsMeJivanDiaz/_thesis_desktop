@@ -1,4 +1,4 @@
-def execute():
+def execute(acc_id):
 
     import cv2 as cv
     import numpy as np
@@ -21,6 +21,17 @@ def execute():
     import eel
     import urllib, urllib3
     import json
+
+    def update(account, count, capacity):
+
+        http = urllib3.PoolManager()
+        query = http.request('POST', 'http://localhost/cimo/web/update_count.php', fields={
+            'account': account,
+            'count': count,
+            'cap': capacity
+        })
+
+        print(query.data)
 
     detector_model = 'tensorflow'
 
@@ -51,6 +62,27 @@ def execute():
     tracked_person = {}
 
     capacity_threshold = 0
+
+    if capacity_threshold == 0:
+
+        http = urllib3.PoolManager()
+        query = http.request('POST', 'http://localhost/cimo/web/get_settings.php', fields={
+            'id': acc_id
+        })
+
+        response = query.data
+
+        json_data = response.decode('utf-8')
+
+        my_dict = json.loads(json_data)
+
+        cap = int(my_dict['max_limit'])
+
+        capacity_threshold = int(my_dict['max_limit'])
+
+        count_id = my_dict['count_id']
+
+    eel.get_data_num(capacity_threshold)
 
     while True:
 
@@ -209,6 +241,10 @@ def execute():
 
                         capacity_threshold -= 1
 
+                        update(account=count_id, count=capacity_threshold, capacity=cap)
+
+                        eel.get_data_num(capacity_threshold)
+
                     elif tracer.initial_movement == 'Going out' and y_coordinates < line_thresh:
 
                         tracer.initial_movement = None
@@ -216,6 +252,10 @@ def execute():
                         tracer.is_counted = True
 
                         capacity_threshold += 1
+
+                        update(account=count_id, count=capacity_threshold, capacity=cap)
+
+                        eel.get_data_num(capacity_threshold)
 
                 elif tracer.is_counted is True:
 
@@ -227,6 +267,10 @@ def execute():
 
                         capacity_threshold += 1
 
+                        update(account=count_id, count=capacity_threshold, capacity=cap)
+
+                        eel.get_data_num(capacity_threshold)
+
                     elif tracer.initial_movement == 'Going in' and y_coordinates > line_thresh:
 
                         tracer.initial_movement = None
@@ -234,6 +278,10 @@ def execute():
                         tracer.is_counted = False
 
                         capacity_threshold -= 1
+
+                        update(account=count_id, count=capacity_threshold, capacity=cap)
+
+                        eel.get_data_num(capacity_threshold)
 
                 cv.putText(frame, 'IM : ' + str(tracer.initial_movement), (x1 + 10, y1 + 20), cv.FONT_HERSHEY_PLAIN,
                            1, (255, 255, 255), 2, cv.LINE_AA)

@@ -115,6 +115,9 @@ html, body{
 .fnt_clr_6{
     color: #FF6E00 ;
 }
+.fnt_clr_7{
+    color: #b6b5b5;
+}
 .bg_1{
     background-color: #A9D8D5;
 }
@@ -185,7 +188,7 @@ html, body{
 }
 .load_wrapper{
     height: 100%;
-    position: absolute;
+    position: fixed;
     opacity: 1;
     width: 100%;
     z-index: 5;
@@ -306,15 +309,38 @@ input{
 .text-shadow-dark{
     text-shadow: 3px 3px 0px #808080;
 }
+#request_stats{
+    height: auto;
+    margin-top: 17px;
+}
 #reg_btn{
     margin-top: 3px;
     float: right;
+    font-size: 12px;
+}
+#Log_btn{
+    margin-top: 3px;
+    float: right;
+    font-size: 12px;
+}
+.lds-ellipsis.deac {
+    display: inline-block;
+    position: relative;
+    width: 0px;
+    height: 0px;
+    transition: .5s ease;
+}
+.lds-ellipsis div.deac {
+    width: 0px;
+    height: 0px;
+    transition: .5s ease;
 }
 .lds-ellipsis {
     display: inline-block;
     position: relative;
     width: 80px;
     height: 80px;
+    transition: .5s ease;
 }
 .lds-ellipsis div {
     position: absolute;
@@ -340,6 +366,21 @@ input{
 .lds-ellipsis div:nth-child(4) {
     left: 56px;
     animation: lds-ellipsis3 0.6s infinite;
+}
+#ld_btn{
+    opacity: 0;
+    pointer-events: none;
+    margin-top: 30px;
+    transition: .5s ease;
+    display: none;
+}
+#ld_btn.active{
+    opacity: 1;
+    pointer-events: auto;
+    transition: .5s ease;
+}
+#ld_btn.doneload{
+    display: block;
 }
 @keyframes lds-ellipsis1 {
     0% {
@@ -379,7 +420,7 @@ input{
     height: 35px;
     width: 100%;
     border: none;
-    background-color: #fa897b;
+    background-color: #FF6E00;
     color: #feffff;
     box-sizing: border-box;
     margin-top: 10px;

@@ -29,6 +29,10 @@ $(window).on('load', function(){
     $('.mn_btn').click(function(){
         var to = $(this).attr('data-to');
         var from = $(this).attr('data-from');
+        $('.load_wrapper').addClass('deac');
+        $('.lds-ellipsis').removeClass('deac')
+        $('.lds-ellipsis div').removeClass('deac')
+        $('#ld_btn').removeClass('active')
         if(to == null || from == null){
             var from = $(this).attr('data-value')
             $('#scroll_1').find('.body-container').addClass('active');
@@ -41,7 +45,7 @@ $(window).on('load', function(){
                 $('#scroll_1').find('.body-container').removeClass('active');
             }, 1500);
             document.getElementById('reg-form-id').reset();
-            
+            document.getElementById('log-in-form').reset();
         }else{
             $('#close').attr('data-value', to);
             $('#'  + from).find('.body-container').addClass('active');
@@ -60,6 +64,9 @@ $(window).on('load', function(){
 
     setTimeout(function(){
         $('.load_wrapper').addClass('deac');
+        setTimeout(function(){
+            $('#ld_btn').addClass('doneload')
+        }, 2000)
     }, 3000);   
 
     function disable(e) { 
@@ -101,7 +108,7 @@ $(window).on('load', function(){
             .bindPopup('Set this as Establishment\'s Location?'+'<br>'+'<button class="map-btn">Get Location</button>')
             .openPopup()
             $('.map-btn').click(function(){
-                $('.map-btn').addClass('bgc-4').html('Saved')
+                $('.map-btn').addClass('bg_9').html('Saved')
                 $('#loc-input').val(e.latlng.lat +','+ e.latlng.lng)
             })
     })
@@ -109,5 +116,85 @@ $(window).on('load', function(){
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
+    // registration
+
+    $('#reg-form-id').submit(function(e){
+        e.preventDefault()
+        $('.load_wrapper').removeClass('deac');
+        $('#request_stats').html('Creating your account');
+        var raw_data = $(this).serializeArray()
+        data = {
+            'data' : true,
+            'est_name' : raw_data[0],
+            'city': raw_data[1],
+            'branch': raw_data[2],
+            'brgy': raw_data[3],
+            'latlong': raw_data[4],
+            'type': raw_data[5],
+            'username': raw_data[6],
+            'password': raw_data[7]
+        }
+        eel.get_form_data_register(data);
+    });
+
+    eel.expose(read_status_py);
+    function read_status_py(status){
+        if(status == 'Registration Success'){
+            setTimeout(function(){
+                $('#ld_btn').attr('data-from', 'scroll_2')
+                $('#ld_btn').attr('data-to', 'scroll_3')
+                $('#request_stats').html('Account creation success!');
+                $('.lds-ellipsis').addClass('deac')
+                $('.lds-ellipsis div').addClass('deac')
+                $('#ld_btn').addClass('active')
+            }, 3000)
+        }else{
+            setTimeout(function(){
+                $('#ld_btn').attr('data-from', 'scroll_2')
+                $('#ld_btn').attr('data-to', 'scroll_2')
+                $('#ld_btn').html('Back');
+                $('#request_stats').html('Username is taken');
+                $('.lds-ellipsis').addClass('deac')
+                $('.lds-ellipsis div').addClass('deac')
+                $('#ld_btn').addClass('active')
+            }, 3000)
+        }
+    }
+
+    // log in
+
+    $('#log-in-form').submit(function(e){
+        e.preventDefault();
+        $('.load_wrapper').removeClass('deac');
+        $('#request_stats').html('Accessing your account');
+        var raw_data = $(this).serializeArray();
+        var data = {
+            'data' : true,
+            'user-login' : raw_data[0],
+            'pass-login' : raw_data[1]
+        }
+        //console.log(data)
+        eel.get_form_data_login(data)
+    })
+
+    eel.expose(read_status_login_py);
+    function read_status_login_py(status){
+        if(status.status == 'Log-in Success'){
+            setTimeout(function(){
+                $('#request_stats').html('Redirecting...');
+                sessionStorage.setItem('sessionID', status.data);
+            }, 3000)
+        }else{
+            setTimeout(function(){
+                $('#ld_btn').attr('data-from', 'scroll_3')
+                $('#ld_btn').attr('data-to', 'scroll_3')
+                $('#ld_btn').html('Back');
+                $('#request_stats').html('Account does not exist');
+                $('.lds-ellipsis').addClass('deac')
+                $('.lds-ellipsis div').addClass('deac')
+                $('#ld_btn').addClass('active')
+            }, 3000)
+        }
+    }
 
 })

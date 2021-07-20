@@ -14,13 +14,14 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body >
+    <script src="/eel.js"></script>
     <script src="../assets/libs/jquery.js"></script>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
-    <!--<script src="eel.js"></script>-->
     <div  class="bg_3 load_wrapper">
         <img class="image_logo" src="../assets/images/logo.png">
         <h1 class="wc_ltr fnt_clr_4">CIMO</h1>
+        <p id="request_stats" class="fnt_clr_7 tg_ln">Loading</p>
         <div class="lds-ellipsis">
             <div>
             </div>
@@ -31,6 +32,9 @@
             <div>
             </div>
         </div>
+        <button data-from="" data-to="" id="ld_btn" class="btn_1 fnt_clr_3 bg_1 hover_shdw mn_btn">
+            Log in
+        </button>
     </div>
     <button data-value="" class="mn_btn" id="close"><i class="fas fa-times fnt_clr_3"></i></button>
     <div class="wrapper" id="scroll_1">
@@ -72,27 +76,27 @@
                                     <section class="icon-box">
                                         <i class="fas fa-building text-shadow-dark"></i>
                                     </section>
-                                    <input required autocomplete="off" name="establishment-name" value="" class="fnt_clr_2" placeholder="Establishment Name">
+                                    <input required autocomplete="off" name="establishment-name" class="fnt_clr_2" placeholder="Establishment Name">
                                 </div>
                                 <div class="input-holder">
                                     <section class="icon-box">
                                         <i class="fas fa-city text-shadow-dark"></i>
                                     </section>
-                                    <input required autocomplete="off" name="city" id="city" class="fnt_clr_2" placeholder="City">
+                                    <input required autocomplete="off" name="city" id="city" class="fnt_clr_2" placeholder="City" >
                                 </div>
                                 <div class="flex">
                                     <div class="input-holder">
                                         <section class="icon-box">
                                             <i class="fas fa-road text-shadow-dark"></i>
                                         </section>
-                                        <input required autocomplete="off" name="branch" id="branch" class="fnt_clr_2" placeholder="Street or Branch">
+                                        <input required autocomplete="off" name="branch" id="branch" class="fnt_clr_2" placeholder="Street or Branch" >
                                     </div>
                                     <div class="spacer"></div>
                                     <div class="input-holder">
                                         <section class="icon-box">
                                             <i class="fas fa-sign text-shadow-dark"></i>
                                         </section>
-                                        <input required autocomplete="off" name="brgy" id="brgy" class="fnt_clr_2" placeholder="Barangay or Area">
+                                        <input required autocomplete="off" name="brgy" id="brgy" class="fnt_clr_2" placeholder="Barangay or Area" >
                                     </div>
                                 </div>
                                 <div class="input-holder">
@@ -125,7 +129,7 @@
                                     </section>
                                     <input required type="password" autocomplete="off" name="passoword" id="pass" class="fnt_clr_2" placeholder="Establishment Passcode">
                                 </div>
-                                <button id="reg_btn" type="button" class="btn_1 fnt_clr_3 bg_9">
+                                <button id="reg_btn" type="submit" class="btn_1 fnt_clr_3 bg_9">
                                     Proceed
                                 </button>
                             </div>
@@ -139,7 +143,7 @@
         <div class="bg_3 body-container active">
             <section class="content content_bg2 center">
                 <div id="form" class="bg_6 f2">
-                    <form>
+                    <form id="log-in-form">
                         <div class="form_header">
                             <h1 class="wc_ltr_v2 fnt_clr_6">Log in Form</h1>
                         </div>
@@ -156,7 +160,7 @@
                                 </section>
                                 <input required type="password" autocomplete="off" name="pass-login" class="font-3" placeholder="Establishment Passcode">
                             </div>
-                            <button id="reg_btn" type="button" class="btn_1 fnt_clr_3 bg_9">
+                            <button id="Log_btn" type="submit" class="btn_1 fnt_clr_3 bg_9">
                                 Proceed
                             </button>
                         </div>
