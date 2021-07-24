@@ -1,0 +1,343 @@
+<div  class="bg_3 load_wrapper">
+    <img class="image_logo" src="../assets/images/logo.png">
+    <h1 class="wc_ltr fnt_clr_4">CIMO</h1>
+    <p id="request_stats" class="fnt_clr_7 tg_ln">Loading</p>
+    <div class="lds-ellipsis">
+        <div>
+        </div>
+        <div>
+        </div>
+        <div>
+        </div>
+        <div>
+        </div>
+    </div>
+    <button data-from="" data-to="" id="ld_btn" class="btn_1 fnt_clr_3 bg_1 hover_shdw mn_btn">
+        Log in
+    </button>
+</div>
+<button data-value="" class="mn_btn" id="close"><i class="fas fa-times fnt_clr_3"></i></button>
+<div class="wrapper" id="scroll_1">
+    <div class="bg_3 body-container">
+        <section class="content content_bg1">
+            <img class="image_logo" src="../assets/images/logo.png">
+            <h1 class="wc_ltr fnt_clr_1">Hi, welcome to CIMO!</h1>
+            <p class="tg_ln fnt_clr_2">Crowd-counting with Integrative Mobile Application</p>
+            <br>
+            <br>
+            <button data-from="scroll_1" data-to="scroll_2" type="button" class="btn_1 fnt_clr_3 bg_1 hover_shdw mn_btn">
+                <div class="btn_anim bg_4">
+                    Register
+                </div>
+            </button>
+            <br>
+            <button data-from="scroll_1" data-to="scroll_3" type="button" id="lgn" class="btn_1 fnt_clr_3 bg_2 hover_shdw mn_btn">
+                <div class="btn_anim bg_5">
+                    Log in
+                </div> 
+            </button>
+        </section>
+    </div>
+</div>
+<div class="wrapper panel_2" id="scroll_2">
+    <div class="bg_3 body-container active">
+        <section class="content flex o-pad">
+            <div class="reg_box bg brpnt">
+                
+            </div>
+            <div class="reg_box" id="rgstr_from_cont">
+                <div id="form" class="bg_6">
+                    <form id="reg-form-id">
+                        <div class="form_header">
+                            <h1 class="wc_ltr_v2 fnt_clr_6">Registration Form</h1>
+                        </div>
+                        <div class="form-body">
+                            <div class="input-holder">
+                                <section class="icon-box">
+                                    <i class="fas fa-building text-shadow-dark"></i>
+                                </section>
+                                <input required autocomplete="off" name="establishment-name" class="fnt_clr_2" placeholder="Establishment Name">
+                            </div>
+                            <div class="input-holder">
+                                <section class="icon-box">
+                                    <i class="fas fa-city text-shadow-dark"></i>
+                                </section>
+                                <input required autocomplete="off" name="city" id="city" class="fnt_clr_2" placeholder="City" >
+                            </div>
+                            <div class="flex">
+                                <div class="input-holder">
+                                    <section class="icon-box">
+                                        <i class="fas fa-road text-shadow-dark"></i>
+                                    </section>
+                                    <input required autocomplete="off" name="branch" id="branch" class="fnt_clr_2" placeholder="Street or Branch" >
+                                </div>
+                                <div class="spacer"></div>
+                                <div class="input-holder">
+                                    <section class="icon-box">
+                                        <i class="fas fa-sign text-shadow-dark"></i>
+                                    </section>
+                                    <input required autocomplete="off" name="brgy" id="brgy" class="fnt_clr_2" placeholder="Barangay or Area" >
+                                </div>
+                            </div>
+                            <div class="input-holder">
+                                <section class="icon-box">
+                                    <i class="fas fa-map-marker-alt text-shadow-dark"></i>
+                                </section>
+                                <input required autocomplete="off" name="latlong" id="loc-input" class="fnt_clr_2" placeholder="Establishment Coordinates" readonly>
+                                <button type="button" id="location"><i class="loc fas fa-map-marked-alt text-shadow-dark"></i></button>
+                            </div>
+                            <div class="input-holder">
+                                <section class="icon-box">
+                                    <i class="fas fa-store text-shadow-dark"></i>
+                                </section>
+                                <select required autocomplete="off" name="establishment-type" class="fnt_clr_2" id="establishment-type">
+                                    <option value="" selected class="color-3">Establishment Type</option>
+                                    <option value="Fast food">Fast Food</option>
+                                    <option value="Supermarket">Supermarket</option>
+                                    <option value="Spplies">Supplies</option>
+                                </select>
+                            </div>
+                            <div class="input-holder">
+                                <section class="icon-box text-shadow-dark">
+                                    <i class="fas fa-user-tag"></i>
+                                </section>
+                                <input required autocomplete="off" name="username" id="user" class="fnt_clr_2" placeholder="Establishment Usercode">
+                            </div>
+                            <div class="input-holder">
+                                <section class="icon-box text-shadow-dark">
+                                    <i class="fas fa-lock"></i>
+                                </section>
+                                <input required type="password" autocomplete="off" name="passoword" id="pass" class="fnt_clr_2" placeholder="Establishment Passcode">
+                            </div>
+                            <button id="reg_btn" type="submit" class="btn_1 fnt_clr_3 bg_9">
+                                Proceed
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<div class="wrapper panel_2" id="scroll_3">
+    <div class="bg_3 body-container active">
+        <section class="content content_bg2 center">
+            <div id="form" class="bg_6 f2">
+                <form id="log-in-form">
+                    <div class="form_header">
+                        <h1 class="wc_ltr_v2 fnt_clr_6">Log in Form</h1>
+                    </div>
+                    <div class="form-body">
+                        <div class="input-holder">
+                            <section class="icon-box text-shadow-dark">
+                                <i class="fas fa-user-tag"></i>
+                            </section>
+                            <input required autocomplete="off" name="user-login" class="font-3" placeholder="Establishment Usercode">
+                        </div>
+                        <div class="input-holder">
+                            <section class="icon-box text-shadow-dark">
+                                <i class="fas fa-lock"></i>
+                            </section>
+                            <input required type="password" autocomplete="off" name="pass-login" class="font-3" placeholder="Establishment Passcode">
+                        </div>
+                        <button id="Log_btn" type="submit" class="btn_1 fnt_clr_3 bg_9">
+                            Proceed
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>
+<div id="map-holder">
+    <button id="close-map" type="button"><i class="fas fa-times"></i></button>
+    <div id="map" ></div>
+</div>
+<script>
+
+    $(document).ready(function(){
+
+        // map on
+
+        $('#location').click(function(){
+            $('#map').addClass('map-active')
+            $('.leaflet-right').addClass('leaf-active')
+            $('#close-map').addClass('active-close')
+        })
+
+        // close map
+
+        $('#close-map').click(function(){
+            $('#map').removeClass('map-active')
+            $('.leaflet-right').removeClass('leaf-active')
+            $('#close-map').removeClass('active-close')
+        })
+
+        // register animation event
+
+        $('.mn_btn').click(function(){
+            var to = $(this).attr('data-to');
+            var from = $(this).attr('data-from');
+            $('.load_wrapper').addClass('deac');
+            $('.lds-ellipsis').removeClass('deac')
+            $('.lds-ellipsis div').removeClass('deac')
+            $('#ld_btn').removeClass('active')
+            if(to == null || from == null){
+                var from = $(this).attr('data-value')
+                $('#scroll_1').find('.body-container').addClass('active');
+                $('#'  + from).find('.body-container').addClass('active');
+                setTimeout(function(){
+                    document.getElementById('scroll_1').scrollIntoView();
+                    $('#close').removeClass('active-cls');
+                },700)
+                setTimeout(() => {
+                    $('#scroll_1').find('.body-container').removeClass('active');
+                }, 1500);
+                document.getElementById('reg-form-id').reset();
+                document.getElementById('log-in-form').reset();
+            }else{
+                $('#close').attr('data-value', to);
+                $('#'  + from).find('.body-container').addClass('active');
+                setTimeout(function(){
+                    document.getElementById(to).scrollIntoView();
+                },700)
+                setTimeout(() => {
+                    $('#'  + from).find('.body-container').removeClass('active');
+                    $('#'  + to).find('.body-container').removeClass('active');
+                    $('#close').addClass('active-cls');
+                }, 1500);
+            }
+        });
+        
+        // functions
+
+        setTimeout(function(){
+            $('.load_wrapper').addClass('deac');
+            setTimeout(function(){
+                $('#ld_btn').addClass('doneload')
+            }, 2000)
+        }, 3000);   
+
+        // map
+
+        var marker = {}
+        var map = L.map('map').setView([10.639181, 122.977394], 7);
+        L.Control.geocoder({
+            defaultMarkGeocode: false,
+        }).on('markgeocode', function(e){
+            map.removeLayer(marker)
+            marker = L.marker([e.geocode.center.lat, e.geocode.center.lng], 30).addTo(map)
+            .bindPopup('Set this as Establishment\'s Location?'+'<br>'+'<button class="map-btn">Get Location</button>')
+            .openPopup()
+            $('.map-btn').click(function(){
+                $('.map-btn').addClass('bgc-4').html('Saved')
+                $('#loc-input').val(e.geocode.center.lat +','+ e.geocode.center.lng)
+            })
+            map.fitBounds(e.geocode.bbox)
+        }).addTo(map);
+        map.on("click", function(e){
+            lat = e.latlng.lat;
+            long = e.latlng.lng;
+            if (marker != undefined){
+                map.removeLayer(marker)
+            }
+            marker = L.marker([lat, long]).addTo(map)
+                .bindPopup('Set this as Establishment\'s Location?'+'<br>'+'<button class="map-btn">Get Location</button>')
+                .openPopup()
+                $('.map-btn').click(function(){
+                    $('.map-btn').addClass('bg_9').html('Saved')
+                    $('#loc-input').val(e.latlng.lat +','+ e.latlng.lng)
+                })
+        })
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // registration
+
+        $('#reg-form-id').submit(function(e){
+            e.preventDefault()
+            $('.load_wrapper').removeClass('deac');
+            $('#request_stats').html('Creating your account');
+            var raw_data = $(this).serializeArray()
+            data = {
+                'data' : true,
+                'est_name' : raw_data[0],
+                'city': raw_data[1],
+                'branch': raw_data[2],
+                'brgy': raw_data[3],
+                'latlong': raw_data[4],
+                'type': raw_data[5],
+                'username': raw_data[6],
+                'password': raw_data[7]
+            }
+            eel.get_form_data_register(data);
+        });
+
+        eel.expose(read_status_py);
+        function read_status_py(status){
+            if(status == 'Registration Success'){
+                setTimeout(function(){
+                    $('#ld_btn').attr('data-from', 'scroll_2')
+                    $('#ld_btn').attr('data-to', 'scroll_3')
+                    $('#request_stats').html('Account creation success!');
+                    $('.lds-ellipsis').addClass('deac')
+                    $('.lds-ellipsis div').addClass('deac')
+                    $('#ld_btn').addClass('active')
+                }, 3000)
+            }else{
+                setTimeout(function(){
+                    $('#ld_btn').attr('data-from', 'scroll_2')
+                    $('#ld_btn').attr('data-to', 'scroll_2')
+                    $('#ld_btn').html('Back');
+                    $('#request_stats').html('Username is taken');
+                    $('.lds-ellipsis').addClass('deac')
+                    $('.lds-ellipsis div').addClass('deac')
+                    $('#ld_btn').addClass('active')
+                }, 3000)
+            }
+        }
+
+        // log in
+
+        $('#log-in-form').submit(function(e){
+            e.preventDefault();
+            $('.load_wrapper').removeClass('deac');
+            $('#request_stats').html('Accessing your account');
+            var raw_data = $(this).serializeArray();
+            var data = {
+                'data' : true,
+                'user-login' : raw_data[0],
+                'pass-login' : raw_data[1]
+            }
+            //console.log(data)
+            eel.get_form_data_login(data)
+        })
+
+        eel.expose(read_status_login_py);
+        function read_status_login_py(status){
+            if(status.status == 'Log-in Success'){
+                setTimeout(function(){
+                    $('#request_stats').html('Redirecting...');
+                    sessionStorage.setItem('data', JSON.stringify(status));
+                    $('#Login-page').addClass('deac');
+                    setTimeout(function(){
+                        $.get('user.html', function(data){
+                            $('#display').html(data)
+                        })
+                    }, 2000)
+                }, 3000)
+            }else{
+                setTimeout(function(){
+                    $('#ld_btn').attr('data-from', 'scroll_3')
+                    $('#ld_btn').attr('data-to', 'scroll_3')
+                    $('#ld_btn').html('Back');
+                    $('#request_stats').html('Account does not exist');
+                    $('.lds-ellipsis').addClass('deac')
+                    $('.lds-ellipsis div').addClass('deac')
+                    $('#ld_btn').addClass('active')
+                }, 3000)
+            }
+        }
+    })
+</script>

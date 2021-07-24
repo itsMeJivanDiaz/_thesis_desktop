@@ -5,6 +5,13 @@ import main
 
 eel.init('D:/xampp/htdocs/cimo_desktop')
 
+
+# close
+def close_callback(route, websockets):
+    if not websockets:
+        print('Bye!')
+        exit()
+
 # register
 @eel.expose
 def get_form_data_register(data):
@@ -27,6 +34,7 @@ def get_form_data_register(data):
     if response.decode('utf-8') is not None:
         eel.read_status_py(response.decode('utf-8'))
 
+
 @eel.expose
 def get_form_data_login(data):
     http = urllib3.PoolManager()
@@ -47,5 +55,5 @@ def get_form_data_login(data):
         eel.read_status_login_py(my_dict)
 
 
-eel.start('app/index.html', port=8001, size=(1000, 660), position=(0, 0),
-          cmdline_args=['--incognito', '--no-experiments'])
+eel.start('app/index.html', host='localhost', port=8001, size=(1100, 670), position=(0, 0), mode='chrome',
+          close_callback=close_callback, cmdline_args=['--incognito'])

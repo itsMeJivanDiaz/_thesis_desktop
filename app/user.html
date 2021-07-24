@@ -1,0 +1,80 @@
+<div id="user-page" class="wrapper flex bg_3">
+    <div id="sidebar" class="bg_6">
+        <div class="sidebar-header">
+            <img class="image_logo_v2" src="../assets/images/logo.png">
+        </div>
+        <ul>
+            <li>
+                <a class="act active" href="home"><i class="active i fas fa-home"></i></a>
+            </li>
+            <li>
+                <a class="act" href="profile"><i class=" i fas fa-user"></i></a>
+            </li>   
+            <li>
+                <a class="act" href="credentials"><i class=" i fas fa-lock"></i></a>
+            </li>
+        </ul>
+    </div>
+    <div id="sidebar-cotent" class="bg_6 flex">
+        <div id="main-content">
+            
+        </div>
+        <div id="sub-content">
+            <div class="sub-header">
+                <img class="user_logo" src="../assets/images/logo.png">
+                <br>
+                <br>
+                <p class="est_name tg_ln_v2 fnt_clr_1"></p>
+                <p class="tg_ln fnt_clr_1"><i class="fnt_clr_6 fas fa-map-marker-alt"></i> &nbsp;<span id="branch">Lopuest East,</span></p>
+                <p id="city" class="tg_ln fnt_clr_1"></p>
+            </div>
+            <div class="sub-body">
+                <div class="box bg_2 fnt_clr_1">
+                    <p class="box_fnt">Allowed Entries</p>
+                    <p id="allowed" class="wc_ltr_v2 fnt_clr_6"></p>
+                </div>
+                <div class="box bg_10 fnt_clr_1">
+                    <p class="box_fnt">Available Entries</p>
+                    <p id="available" class="wc_ltr_v2 fnt_clr_6"></p>
+                </div>
+                <div class="box bg_3 fnt_clr_1">
+                    <p class="box_fnt">Current Entries</p>
+                    <p id="current" class="wc_ltr_v2 fnt_clr_6">0</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function() {
+
+        const data_dets = JSON.parse(sessionStorage.getItem('data'));
+
+        $('.est_name').html(data_dets.name);
+        $('#branch').html(data_dets.branch);
+        $('#city').html(data_dets.city + ' City, ' + data_dets.loc_brgy + ' Area');
+        $('#allowed').html(data_dets.allowable);
+        $('#available').html(data_dets.allowable - data_dets.current_count);
+        $('#current').html(data_dets.current_count);
+
+        var url = 'home';
+
+        get(url);
+
+        $('.act').click(function(e) {
+            e.preventDefault();
+            get($(this).attr('href'))
+            $('.act').removeClass('active')
+            $('.act').children('i').removeClass('active')
+            $(this).children('i').addClass('active')
+            $(this).addClass('active')
+        })
+
+        function get(url){
+            $.get(url + '.html', function(data){
+                $('#main-content').html(data);
+            });
+        }
+
+    })
+</script>

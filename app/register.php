@@ -7,7 +7,6 @@ if(isset($_POST['name'])){
     $str_result = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'; 
     return substr(str_shuffle($str_result),  0, $length_of_string); 
     } 
-
     $uniqid_gen_cnt = uniqid('IDcnt=');
     $uniqid_gen_loc = uniqid('IDloc=');
     $uniqid_gen_acc = uniqid('IDacc=');
@@ -26,7 +25,7 @@ if(isset($_POST['name'])){
     $latlong = $_POST['latlong'];
     $coords = explode(',', $latlong);
     $date_time = date('Y-m-d h:i:s');
-    $count = 0; 
+    $count = 0;
     $lat = $coords[0];
     $long = $coords[1];
 
@@ -44,7 +43,6 @@ if(isset($_POST['name'])){
     $stmt = mysqli_stmt_init($conn);
 
     function check_user($process, $db, $statement, $user){
-       
         if(!mysqli_stmt_prepare($statement, $process)){
             return false;
         }else{
