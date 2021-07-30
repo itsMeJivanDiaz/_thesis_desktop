@@ -1,0 +1,275 @@
+<div class="main-header bg_3 flex">
+    <div class="header-txt">
+        <p class="tg_ln_v3 fnt_clr_1">Hi, <span class="est_name"></span></p>
+        <p class="tg_ln fnt_clr_2">Do you want to make any changes in 
+            <br>your profile?</p>
+    </div>
+    <img class="header-img" src="../assets/images/profile.png">
+</div>
+<div class="user-form">
+    <form id="edit_form_pic">
+        <div class="flex_v2 edit-box">
+            <label class="fnt_clr_2 tg_ln">
+                Profile picture
+            </label>
+            <div class="spacer_v2"></div>
+            <div class="edit-image-holder">
+                <input class="acc_id" value="" name="acc_id" hidden readonly>
+                <input accept="image" id="file" type="file" name="file" hidden>
+                <section class="icon-box-edit  flex">
+                    <img class="image_logo_edit" src="">
+                    <button type="button" id="edit_pic">
+                        <i class="text-shadow-dark fnt_clr_6 fas fa-camera"></i>
+                    </button>
+                </section>
+            </div>
+            <button class="bg_9 disabled" id="submit_btn" type="submit">
+                Upload Image &nbsp; &nbsp;<i class="fas fa-cloud-upload-alt"></i>
+            </button>
+        </div>
+    </form>
+    <form id="edit-from">
+        <input class="acc_id" value="" name="acc_id" hidden readonly>
+        <br>
+        <div class="flex_v2 edit-box">
+            <label class="fnt_clr_2 tg_ln">
+               Establishment Name
+            </label>
+            <div class="spacer_v2"></div>
+            <div class="input-holder_v2">
+                <input name="name" class="edit" id="edit_name" value="">
+            </div>
+        </div>
+        <div class="flex_v2 edit-box">
+            <label class="fnt_clr_2 tg_ln">
+                Street / Branch
+            </label>
+            <div class="spacer_v2"></div>
+            <div class="input-holder_v2">
+                <input name="street" class="edit" id="edit_street" value="">
+            </div>
+        </div>
+        <div class="flex_v2 edit-box">
+            <label class="fnt_clr_2 tg_ln">
+               Barangay / Area
+            </label>
+            <div class="spacer_v2"></div>
+            <div class="input-holder_v2">
+                <input name="brgy" class="edit" id="edit_brgy" value="">
+            </div>
+        </div>
+        <div class="flex_v2 edit-box">
+            <label class="fnt_clr_2 tg_ln">
+               City
+            </label>
+            <div class="spacer_v2"></div>
+            <div class="input-holder_v2">
+                <input name="city" class="edit" id="edit_city" value="">
+            </div>
+        </div>
+        <div class="flex_v2 edit-box">
+            <label class="fnt_clr_2 tg_ln">
+               Establishment type
+            </label>            
+            <div class="spacer_v2"></div>
+            <div class="input-holder_v2">
+                <select class="edit" name="type" id="edit_type">
+                    <option value="Fast food">Fast Food</option>
+                    <option value="Supermarket">Supermarket</option>
+                    <option value="Spplies">Supplies</option>
+                    <option value="Spplies">Medicine</option>
+                </select>
+            </div>
+        </div>
+        <div class="flex_v2 edit-box">
+            <label class="fnt_clr_2 tg_ln">
+               Coordinates
+            </label>
+            <div class="spacer_v2"></div>
+            <div class="input-holder_v2">
+                <input class="edit" name="coords"  id="edit_coords" value="">
+                <button type="button" id="location"><i class="loc fas fa-map-marked-alt text-shadow-dark"></i></button>
+            </div>
+        </div>
+        <button id="edit_btn" type="submit" class="hover_shdw full btn_1 fnt_clr_3 bg_9">
+            Save changes
+        </button>
+    </form>
+</div>
+<div id="map-holder">
+    <button id="close-map" type="button"><i class="fas fa-times"></i></button>
+    <div id="map" ></div>
+</div>
+<script>
+    $(document).ready(function(){
+
+        var button_stats = 0;
+        var pick_img = 0;
+
+        dist();
+
+        $('.acc_id').attr('value', sessionStorage.getItem('acc_id'));
+
+        function dist(){
+            $('.est_name').html(sessionStorage.getItem('name'));
+            $('#edit_name').attr('value', sessionStorage.getItem('name'));
+            $('#edit_street').attr('value', sessionStorage.getItem('branch'));
+            $('#edit_brgy').attr('value', sessionStorage.getItem('brgy'));
+            $('#edit_city').attr('value', sessionStorage.getItem('city'));
+            $('#edit_type').val(sessionStorage.getItem('type')).change();
+            if(sessionStorage.getItem('logo') == 'None'){
+                $('.image_logo_edit').attr('src', '../assets/images/logo.png');
+            }else{
+                $('.image_logo_edit').attr('src', '../uploads/' + sessionStorage.getItem('logo'));
+            }
+            $('#edit_coords').attr('value', sessionStorage.getItem('lat') + ', ' + sessionStorage.getItem('long'));
+        }
+
+        $('#location').click(function(){
+            $('#map').addClass('map-active')
+            $('.leaflet-right').addClass('leaf-active')
+            $('#close-map').addClass('active-close')
+        })
+
+        $('#close-map').click(function(){
+            $('#map').removeClass('map-active')
+            $('.leaflet-right').removeClass('leaf-active')
+            $('#close-map').removeClass('active-close')
+        })
+
+        var marker = {}
+        var map = L.map('map').setView([10.639181, 122.977394], 7);
+        L.Control.geocoder({
+            defaultMarkGeocode: false,
+        }).on('markgeocode', function(e){
+            map.removeLayer(marker)
+            marker = L.marker([e.geocode.center.lat, e.geocode.center.lng], 30).addTo(map)
+            .bindPopup('Set this as Establishment\'s Location?'+'<br>'+'<button class="map-btn">Get Location</button>')
+            .openPopup()
+            $('.map-btn').click(function(){
+                button_stats = 1;
+                $('#edit_btn').html('Save changes');
+                $('.map-btn').addClass('bgc-4').html('Saved')
+                $('#edit_coords').val(e.geocode.center.lat +', '+ e.geocode.center.lng).change()
+            })
+            map.fitBounds(e.geocode.bbox)
+        }).addTo(map);
+        map.on("click", function(e){
+            lat = e.latlng.lat;
+            long = e.latlng.lng;
+            if (marker != undefined){
+                map.removeLayer(marker)
+            }
+            marker = L.marker([lat, long]).addTo(map)
+                .bindPopup('Set this as Establishment\'s Location?'+'<br>'+'<button class="map-btn">Get Location</button>')
+                .openPopup()
+                $('.map-btn').click(function(){
+                    button_stats = 1;
+                    $('#edit_btn').html('Save changes');
+                    $('.map-btn').addClass('bg_9').html('Saved')
+                    $('#edit_coords').val(e.latlng.lat +', '+ e.latlng.lng).change()
+                })
+        })
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        $('.edit').on('keydown', function(e){
+            $('#edit_btn').html('Save changes');
+            button_stats = 1;
+        })
+
+        $('#edit_type').click(function(){
+            $('#edit_btn').html('Save changes');
+            button_stats = 1;
+        })
+
+        $('#edit_pic').click(function(){
+            $('#file').click();
+        })
+
+        $('#file').change(function(e){
+            var [file] = e.target.files;
+            if(file){
+                pick_img = 1;
+                $('#submit_btn').addClass('hover_shdw');
+                $('#submit_btn').removeClass('disabled');
+                $('.image_logo_edit').attr('src', URL.createObjectURL(file));
+            }
+        })
+
+
+        $('#edit-from').submit(function(e){
+            e.preventDefault();
+            if(button_stats == 1){
+                $('#edit_btn').addClass('unclickable');
+                $('#edit_btn').removeClass('hover_shdw');
+                $('#edit_btn').html('Processing Request &nbsp;&nbsp;<i class="fas fa-wrench"></i>');
+                var data = $(this).serialize();
+                $.ajax({
+                    method: 'POST',
+                    url: 'http://localhost/cimo_desktop/app/update_profile.php',
+                    data: data,
+                    dataType: 'JSON',
+                    success: function(resp){
+                        if(resp.status == 'Update Success.'){
+                            sessionStorage.setItem('name', resp.new_name);
+                            sessionStorage.setItem('type', resp.new_type);
+                            sessionStorage.setItem('city', resp.new_city);
+                            sessionStorage.setItem('branch', resp.new_str);
+                            sessionStorage.setItem('brgy', resp.new_brgy);
+                            sessionStorage.setItem('lat', resp.new_lat);
+                            sessionStorage.setItem('long', resp.new_long);
+                            dist();
+                            setTimeout(function(){
+                                $('#edit_btn').removeClass('unclickable');
+                                $('#edit_btn').addClass('hover_shdw');
+                                $('#edit_btn').html('Request successful &nbsp;&nbsp;<i class="fas fa-thumbs-up"></i>');
+                                button_stats  = 0;
+                            }, 2000)
+                        }else{
+                            setTimeout(function(){
+                                button_stats  = 0;
+                                $('#edit_btn').removeClass('unclickable');
+                                $('#edit_btn').addClass('hover_shdw');
+                                $('#edit_btn').html('Request error &nbsp;&nbsp;<i class="fas fa-thumbs-up"></i>');
+                            }, 2000)
+                        }
+                    }
+                });
+            }else{
+                $('#edit_btn').html('Nothing to save &nbsp;&nbsp;<i class="fas fa-question"></i>');
+            }
+        })
+
+        $('#edit_form_pic').submit(function(e){
+            e.preventDefault();
+            var formdata = new FormData(this)
+            if(pick_img == 1){
+                $('#submit_btn').removeClass('hover_shdw');
+                $('#submit_btn').addClass('disabled');
+                pick_img = 0;
+                $.ajax({
+                    method: 'POST',
+                    data: formdata,
+                    url: 'http://localhost/cimo_desktop/app/upload.php',
+                    contentType: false,
+                    processData: false,
+                    cache: false,
+                    dataType: 'JSON',
+                    success: function(data){
+                        if(data.status == "Update Success"){
+                            sessionStorage.setItem('logo', data.data_url)
+                            $('.image_logo_edit').attr('src', '../uploads/' + data.data_url);
+                            $('#image_logo').attr('src', '../uploads/' + data.data_url);
+
+                        }else{
+                            $('.image_logo_edit').attr('src', '../uploads/' + sessionStorage.getItem('logo'));
+                            $('#image_logo').attr('src', '../uploads/' + sessionStorage.getItem('logo'));
+                        }
+                    }   
+                })
+            }
+        })
+    })
+</script>

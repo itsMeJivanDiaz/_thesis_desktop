@@ -2,6 +2,9 @@ import eel
 import urllib, urllib3
 import json
 import main
+import os.path, sys
+import shutil
+
 
 eel.init('D:/xampp/htdocs/cimo_desktop')
 
@@ -55,5 +58,5 @@ def get_form_data_login(data):
         eel.read_status_login_py(my_dict)
 
 
-eel.start('app/index.html', host='localhost', port=8001, size=(1100, 670), position=(0, 0), mode='chrome',
+eel.start('app/index.html', host='localhost', port=8001, size=(1100, 670), position=(0, 0),
           close_callback=close_callback, cmdline_args=['--incognito'])

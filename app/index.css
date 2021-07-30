@@ -45,6 +45,7 @@ button:focus {
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
+    user-select: none;
 }
 
 html,
@@ -694,6 +695,8 @@ a.active {
 .user_logo{
     height: 75px;
     width: 75px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 .sub-header{
@@ -756,24 +759,28 @@ a.active {
 .image_logo_edit{
     height: 45px;
     width: 45px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 .edit-image-holder i{
-    font-size: 12px;
+    font-size: 20px;
     position: absolute;
 }
 
 .edit-image-holder{
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: flex-start;
     width: 100%;
+    margin-left: 10px;
+    height: 100%;
 }
 
 .icon-box-edit{
     position: absolute;
     height: 20px;
-    width: 20px;
+    width: 110px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -814,13 +821,48 @@ a.active {
 }
 
 #edit_btn{
-    margin-top: 15px;
+    margin-top: 13px;
     float: right;
     font-weight: normal;
 }
 
-.disabled{
+#edit_btn_pass{
+    margin-top: 13px;
+}
+
+.unclickable{
     pointer-events: none;
     cursor: pointer;
-    opacity: 0;
+    transition: 0.5s ease;
+}
+
+#edit_pic{
+    height: auto;
+    width: auto;
+    background-color: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#submit_btn{
+    height: 30px;
+    width: 250px;
+    border: none;
+    border-radius: 5px;
+    font-size: 12px;
+    font-family: 'Poppins-Bold';
+    color: white;
+    transition: 0.5s ease;
+}
+
+#submit_btn.disabled{
+    pointer-events: none;
+    color: #ffc090;
+    transition: 0.5s ease;
+}
+
+.btn_1.full{
+    width: 100%;
 }

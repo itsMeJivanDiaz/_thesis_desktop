@@ -132,13 +132,13 @@
                             <section class="icon-box text-shadow-dark">
                                 <i class="fas fa-user-tag"></i>
                             </section>
-                            <input required autocomplete="off" name="user-login" class="font-3" placeholder="Establishment Usercode">
+                            <input value="mcdo" required autocomplete="off" name="user-login" class="font-3" placeholder="Establishment Usercode">
                         </div>
                         <div class="input-holder">
                             <section class="icon-box text-shadow-dark">
                                 <i class="fas fa-lock"></i>
                             </section>
-                            <input required type="password" autocomplete="off" name="pass-login" class="font-3" placeholder="Establishment Passcode">
+                            <input value="mcdo" required type="password" autocomplete="off" name="pass-login" class="font-3" placeholder="Establishment Passcode">
                         </div>
                         <button id="Log_btn" type="submit" class="btn_1 fnt_clr_3 bg_9">
                             Proceed
@@ -319,7 +319,18 @@
             if(status.status == 'Log-in Success'){
                 setTimeout(function(){
                     $('#request_stats').html('Redirecting...');
-                    sessionStorage.setItem('data', JSON.stringify(status));
+                    sessionStorage.setItem('acc_id', status.id);
+                    sessionStorage.setItem('name', status.name);
+                    sessionStorage.setItem('type', status.type);
+                    sessionStorage.setItem('logo', status.logo);
+                    sessionStorage.setItem('normal_capacity', status.normal_capacity);
+                    sessionStorage.setItem('current_count', status.current_count);
+                    sessionStorage.setItem('allowable', status.allowable);
+                    sessionStorage.setItem('city', status.city);
+                    sessionStorage.setItem('branch', status.branch);
+                    sessionStorage.setItem('brgy', status.brgy);
+                    sessionStorage.setItem('lat', status.lat);
+                    sessionStorage.setItem('long', status.long);
                     $('#Login-page').addClass('deac');
                     setTimeout(function(){
                         $.get('user.html', function(data){

@@ -5,13 +5,13 @@
         </div>
         <ul>
             <li>
-                <a class="act active" href="home"><i class="active i fas fa-home"></i></a>
+                <a class="act active" href="home.html"><i class="active i fas fa-home"></i></a>
             </li>
             <li>
-                <a class="act" href="profile"><i class=" i fas fa-user"></i></a>
+                <a class="act" href="profile.php"><i class=" i fas fa-user"></i></a>
             </li>   
             <li>
-                <a class="act" href="credentials"><i class=" i fas fa-lock"></i></a>
+                <a class="act" href="credentials.html"><i class=" i fas fa-lock"></i></a>
             </li>
         </ul>
     </div>
@@ -21,7 +21,7 @@
         </div>
         <div id="sub-content">
             <div class="sub-header">
-                <img class="user_logo" src="../assets/images/logo.png">
+                <img id="image_logo" class="user_logo" src="../assets/images/logo.png">
                 <br>
                 <br>
                 <p class="est_name tg_ln_v2 fnt_clr_1"></p>
@@ -46,18 +46,21 @@
     </div>
 </div>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function(){
 
-        const data_dets = JSON.parse(sessionStorage.getItem('data'));
+        if(sessionStorage.getItem('logo')  == 'None'){
+            $('#image_logo').attr('src', '../assets/images/logo.png');
+        }else{
+            $('#image_logo').attr('src', '../uploads/' + sessionStorage.getItem('logo'));
+        }
+        $('.est_name').html(sessionStorage.getItem('name'));
+        $('#branch').html(sessionStorage.getItem('branch'));
+        $('#city').html(sessionStorage.getItem('city') + ' City, ' + sessionStorage.getItem('brgy') + ' Area');
+        $('#allowed').html(sessionStorage.getItem('allowable'));
+        $('#available').html(sessionStorage.getItem('allowable') - sessionStorage.getItem('current_count'));
+        $('#current').html(sessionStorage.getItem('current_count'));
 
-        $('.est_name').html(data_dets.name);
-        $('#branch').html(data_dets.branch);
-        $('#city').html(data_dets.city + ' City, ' + data_dets.loc_brgy + ' Area');
-        $('#allowed').html(data_dets.allowable);
-        $('#available').html(data_dets.allowable - data_dets.current_count);
-        $('#current').html(data_dets.current_count);
-
-        var url = 'home';
+        var url = 'home.html';
 
         get(url);
 
@@ -71,10 +74,9 @@
         })
 
         function get(url){
-            $.get(url + '.html', function(data){
+            $.get(url, function(data){
                 $('#main-content').html(data);
             });
         }
-
     })
 </script>
