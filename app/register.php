@@ -1,11 +1,11 @@
 <?php
+header('Access-Control-Allow-Origin: http://localhost:8001');
 date_default_timezone_set('Asia/Manila');
-
 if(isset($_POST['name'])){
     require 'db.php';
     function random_strings($length_of_string) { 
-    $str_result = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'; 
-    return substr(str_shuffle($str_result),  0, $length_of_string); 
+        $str_result = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'; 
+        return substr(str_shuffle($str_result),  0, $length_of_string); 
     } 
     $uniqid_gen_cnt = uniqid('IDcnt=');
     $uniqid_gen_loc = uniqid('IDloc=');
@@ -23,7 +23,13 @@ if(isset($_POST['name'])){
     $username = $_POST['username'];
     $password = $_POST['password'];
     $latlong = $_POST['latlong'];
-    $coords = explode(',', $latlong);
+    $coords = explode(', ', $latlong);
+    if(sizeof($coords) != 2){
+        echo json_encode(array(
+            'status' => 'Your lcoation is incomplete.',
+        ));
+        return false;
+    }
     $date_time = date('Y-m-d h:i:s');
     $count = 0;
     $lat = $coords[0];
@@ -55,7 +61,6 @@ if(isset($_POST['name'])){
                 return false;
             }
         }
-
     }
 
     function register_account($process, $db, $statement, $id, $logo, $user, $pass, $dt){
@@ -115,21 +120,33 @@ if(isset($_POST['name'])){
                 if($third_p == true){
                     $last = register_establishment($sql_establishment, $conn, $stmt, $uid_est, $name, $type, $uid_cnt, $uid_loc, $uid_acc, $date_time);
                     if($last == true){
-                        echo "Registration Success";
+                        echo json_encode(array(
+                            'status' => 'Registration Success'
+                        ));
                     }else{
-                        echo "Something went wrong";
+                        echo json_encode(array(
+                            'status' => 'Registration Failed'
+                        ));
                     }
                 }else{
-                    echo "Something went wrong";
+                    echo json_encode(array(
+                        'status' => 'Registration Failed'
+                    ));
                 }
             }else{
-                echo "Something went wrong";
+                echo json_encode(array(
+                    'status' => 'Registration Failed'
+                ));
             }
         }else{
-            echo "Something went wrong";
+            echo json_encode(array(
+                'status' => 'Registration Failed'
+            ));
         }
     }else{
-        echo "Username is taken";
+        echo json_encode(array(
+            'status' => 'Username is taken.'
+        ));
     }
 }
 

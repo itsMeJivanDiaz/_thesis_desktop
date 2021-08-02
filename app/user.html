@@ -53,12 +53,17 @@
         }else{
             $('#image_logo').attr('src', '../uploads/' + sessionStorage.getItem('logo'));
         }
-        $('.est_name').html(sessionStorage.getItem('name'));
-        $('#branch').html(sessionStorage.getItem('branch'));
-        $('#city').html(sessionStorage.getItem('city') + ' City, ' + sessionStorage.getItem('brgy') + ' Area');
-        $('#allowed').html(sessionStorage.getItem('allowable'));
-        $('#available').html(sessionStorage.getItem('allowable') - sessionStorage.getItem('current_count'));
-        $('#current').html(sessionStorage.getItem('current_count'));
+        
+        init();
+
+        function init(){
+            $('.est_name').html(sessionStorage.getItem('name'));
+            $('#branch').html(sessionStorage.getItem('branch'));
+            $('#city').html(sessionStorage.getItem('city') + ' City, ' + sessionStorage.getItem('brgy') + ' Area');
+            $('#allowed').html(sessionStorage.getItem('allowable'));
+            $('#available').html(sessionStorage.getItem('allowable') - sessionStorage.getItem('current_count'));
+            $('#current').html(sessionStorage.getItem('current_count'));
+        }
 
         var url = 'home.html';
 

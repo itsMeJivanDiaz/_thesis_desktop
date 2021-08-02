@@ -220,12 +220,15 @@
                             sessionStorage.setItem('brgy', resp.new_brgy);
                             sessionStorage.setItem('lat', resp.new_lat);
                             sessionStorage.setItem('long', resp.new_long);
-                            dist();
                             setTimeout(function(){
                                 $('#edit_btn').removeClass('unclickable');
                                 $('#edit_btn').addClass('hover_shdw');
                                 $('#edit_btn').html('Request successful &nbsp;&nbsp;<i class="fas fa-thumbs-up"></i>');
                                 button_stats  = 0;
+                                $('.est_name').html(sessionStorage.getItem('name'));
+                                $('#branch').html(sessionStorage.getItem('branch'));
+                                $('#city').html(sessionStorage.getItem('city') + ' City, ' + sessionStorage.getItem('brgy') + ' Area');
+                                dist();
                             }, 2000)
                         }else{
                             setTimeout(function(){

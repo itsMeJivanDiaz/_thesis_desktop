@@ -56,7 +56,7 @@
                                 <section class="icon-box">
                                     <i class="fas fa-building text-shadow-dark"></i>
                                 </section>
-                                <input required autocomplete="off" name="establishment-name" class="fnt_clr_2" placeholder="Establishment Name">
+                                <input required autocomplete="off" name="name" class="fnt_clr_2" placeholder="Establishment Name">
                             </div>
                             <div class="input-holder">
                                 <section class="icon-box">
@@ -90,7 +90,7 @@
                                 <section class="icon-box">
                                     <i class="fas fa-store text-shadow-dark"></i>
                                 </section>
-                                <select required autocomplete="off" name="establishment-type" class="fnt_clr_2" id="establishment-type">
+                                <select required autocomplete="off" name="type" class="fnt_clr_2" id="establishment-type">
                                     <option value="" selected class="color-3">Establishment Type</option>
                                     <option value="Fast food">Fast Food</option>
                                     <option value="Supermarket">Supermarket</option>
@@ -107,7 +107,7 @@
                                 <section class="icon-box text-shadow-dark">
                                     <i class="fas fa-lock"></i>
                                 </section>
-                                <input required type="password" autocomplete="off" name="passoword" id="pass" class="fnt_clr_2" placeholder="Establishment Passcode">
+                                <input required type="password" autocomplete="off" name="password" id="pass" class="fnt_clr_2" placeholder="Establishment Passcode">
                             </div>
                             <button id="reg_btn" type="submit" class="btn_1 fnt_clr_3 bg_9">
                                 Proceed
@@ -231,7 +231,7 @@
             .openPopup()
             $('.map-btn').click(function(){
                 $('.map-btn').addClass('bgc-4').html('Saved')
-                $('#loc-input').val(e.geocode.center.lat +','+ e.geocode.center.lng)
+                $('#loc-input').val(e.geocode.center.lat +', '+ e.geocode.center.lng)
             })
             map.fitBounds(e.geocode.bbox)
         }).addTo(map);
@@ -246,7 +246,7 @@
                 .openPopup()
                 $('.map-btn').click(function(){
                     $('.map-btn').addClass('bg_9').html('Saved')
-                    $('#loc-input').val(e.latlng.lat +','+ e.latlng.lng)
+                    $('#loc-input').val(e.latlng.lat +', '+ e.latlng.lng)
                 })
         })
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -259,44 +259,37 @@
             e.preventDefault()
             $('.load_wrapper').removeClass('deac');
             $('#request_stats').html('Creating your account');
-            var raw_data = $(this).serializeArray()
-            data = {
-                'data' : true,
-                'est_name' : raw_data[0],
-                'city': raw_data[1],
-                'branch': raw_data[2],
-                'brgy': raw_data[3],
-                'latlong': raw_data[4],
-                'type': raw_data[5],
-                'username': raw_data[6],
-                'password': raw_data[7]
-            }
-            eel.get_form_data_register(data);
+            var data = $(this).serialize()
+            $.ajax({
+                method: 'POST',
+                data: data,
+                url: 'http://localhost/cimo_desktop/app/register.php',
+                dataType: 'JSON',
+                success: function(resp){
+                    console.log(resp)
+                    if(resp.status == 'Registration Success'){
+                        setTimeout(function(){
+                            $('#ld_btn').attr('data-from', 'scroll_2')
+                            $('#ld_btn').attr('data-to', 'scroll_3')
+                            $('#request_stats').html('Account creation success!');
+                            $('.lds-ellipsis').addClass('deac')
+                            $('.lds-ellipsis div').addClass('deac')
+                            $('#ld_btn').addClass('active')
+                        }, 3000)
+                    }else{
+                        setTimeout(function(){
+                            $('#ld_btn').attr('data-from', 'scroll_2')
+                            $('#ld_btn').attr('data-to', 'scroll_2')
+                            $('#ld_btn').html('Back');
+                            $('#request_stats').html('Username is taken');
+                            $('.lds-ellipsis').addClass('deac')
+                            $('.lds-ellipsis div').addClass('deac')
+                            $('#ld_btn').addClass('active')
+                        }, 3000)
+                    }
+                }
+            })
         });
-
-        eel.expose(read_status_py);
-        function read_status_py(status){
-            if(status == 'Registration Success'){
-                setTimeout(function(){
-                    $('#ld_btn').attr('data-from', 'scroll_2')
-                    $('#ld_btn').attr('data-to', 'scroll_3')
-                    $('#request_stats').html('Account creation success!');
-                    $('.lds-ellipsis').addClass('deac')
-                    $('.lds-ellipsis div').addClass('deac')
-                    $('#ld_btn').addClass('active')
-                }, 3000)
-            }else{
-                setTimeout(function(){
-                    $('#ld_btn').attr('data-from', 'scroll_2')
-                    $('#ld_btn').attr('data-to', 'scroll_2')
-                    $('#ld_btn').html('Back');
-                    $('#request_stats').html('Username is taken');
-                    $('.lds-ellipsis').addClass('deac')
-                    $('.lds-ellipsis div').addClass('deac')
-                    $('#ld_btn').addClass('active')
-                }, 3000)
-            }
-        }
 
         // log in
 
@@ -304,51 +297,48 @@
             e.preventDefault();
             $('.load_wrapper').removeClass('deac');
             $('#request_stats').html('Accessing your account');
-            var raw_data = $(this).serializeArray();
-            var data = {
-                'data' : true,
-                'user-login' : raw_data[0],
-                'pass-login' : raw_data[1]
-            }
-            //console.log(data)
-            eel.get_form_data_login(data)
+            var data = $(this).serialize();
+            $.ajax({
+                method: 'POST',
+                data: data,
+                url: 'http://localhost/cimo_desktop/app/login.php',
+                dataType: 'JSON',
+                success: function(resp){
+                    if(resp.status == 'Log-in Success'){
+                        setTimeout(function(){
+                            $('#request_stats').html('Redirecting...');
+                            sessionStorage.setItem('acc_id', resp.id);
+                            sessionStorage.setItem('name', resp.name);
+                            sessionStorage.setItem('type', resp.type);
+                            sessionStorage.setItem('logo', resp.logo);
+                            sessionStorage.setItem('normal_capacity', resp.normal_capacity);
+                            sessionStorage.setItem('current_count', resp.current_count);
+                            sessionStorage.setItem('allowable', resp.allowable);
+                            sessionStorage.setItem('city', resp.city);
+                            sessionStorage.setItem('branch', resp.branch);
+                            sessionStorage.setItem('brgy', resp.brgy);
+                            sessionStorage.setItem('lat', resp.lat);
+                            sessionStorage.setItem('long', resp.long);
+                            $('#Login-page').addClass('deac');
+                            setTimeout(function(){
+                                $.get('user.html', function(data){
+                                    $('#display').html(data)
+                                })
+                            }, 2000)
+                        }, 3000)
+                    }else{
+                        setTimeout(function(){
+                            $('#ld_btn').attr('data-from', 'scroll_3')
+                            $('#ld_btn').attr('data-to', 'scroll_3')
+                            $('#ld_btn').html('Back');
+                            $('#request_stats').html('Account does not exist');
+                            $('.lds-ellipsis').addClass('deac')
+                            $('.lds-ellipsis div').addClass('deac')
+                            $('#ld_btn').addClass('active')
+                        }, 3000)
+                    }
+                }
+            })
         })
-
-        eel.expose(read_status_login_py);
-        function read_status_login_py(status){
-            if(status.status == 'Log-in Success'){
-                setTimeout(function(){
-                    $('#request_stats').html('Redirecting...');
-                    sessionStorage.setItem('acc_id', status.id);
-                    sessionStorage.setItem('name', status.name);
-                    sessionStorage.setItem('type', status.type);
-                    sessionStorage.setItem('logo', status.logo);
-                    sessionStorage.setItem('normal_capacity', status.normal_capacity);
-                    sessionStorage.setItem('current_count', status.current_count);
-                    sessionStorage.setItem('allowable', status.allowable);
-                    sessionStorage.setItem('city', status.city);
-                    sessionStorage.setItem('branch', status.branch);
-                    sessionStorage.setItem('brgy', status.brgy);
-                    sessionStorage.setItem('lat', status.lat);
-                    sessionStorage.setItem('long', status.long);
-                    $('#Login-page').addClass('deac');
-                    setTimeout(function(){
-                        $.get('user.html', function(data){
-                            $('#display').html(data)
-                        })
-                    }, 2000)
-                }, 3000)
-            }else{
-                setTimeout(function(){
-                    $('#ld_btn').attr('data-from', 'scroll_3')
-                    $('#ld_btn').attr('data-to', 'scroll_3')
-                    $('#ld_btn').html('Back');
-                    $('#request_stats').html('Account does not exist');
-                    $('.lds-ellipsis').addClass('deac')
-                    $('.lds-ellipsis div').addClass('deac')
-                    $('#ld_btn').addClass('active')
-                }, 3000)
-            }
-        }
     })
 </script>

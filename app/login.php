@@ -1,5 +1,5 @@
 <?php
-
+header('Access-Control-Allow-Origin: http://localhost:8001');
 if(isset($_POST['user-login'])){
     
     require 'db.php';
