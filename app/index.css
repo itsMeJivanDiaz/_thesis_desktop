@@ -19,6 +19,10 @@
     src: url('../assets/fonts/Poppins-Bold.ttf');
 }
 
+ul{
+    list-style: none;
+}
+
 option{
     outline: none;
 }
@@ -101,6 +105,16 @@ body {
     padding-top: 65px;
 }
 
+.vert_center{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.al_cntr{
+    align-items: center;
+}
+
 #close {
     position: fixed;
     top: 20px;
@@ -124,6 +138,12 @@ body {
 .o-pad {
     padding: 15px 15px 15px 15px;
 }
+.o-pad.bottom{
+    padding: 15px 15px 60px 15px;
+}
+.o-pad.top{
+    padding: 25px 45px 15px 45px;
+}
 
 .image_logo {
     height: 65px;
@@ -132,10 +152,31 @@ body {
     border-radius: 50%;
 }
 
+.image_logo.borderless{
+    border-radius: 0px;
+}
+
+.image_logo.medium{
+    height: 95px;
+    width: 92px;
+}
+
+.image_logo.small{
+    height: 50px;
+    width: 50px;
+    margin-bottom: 10px;
+}
+
 .image_logo_v2 {
     height: 50px;
     width: 50px;
     border-radius: 50%;
+}
+
+.image_logo.large {
+    height: 100px;
+    width: 100px;
+    margin-bottom: 15px;
 }
 
 .fnt_clr_1 {
@@ -164,6 +205,10 @@ body {
 
 .fnt_clr_7 {
     color: #b6b5b5;
+}
+
+.bg_trans{
+    background-color: transparent;
 }
 
 .bg_1 {
@@ -210,9 +255,17 @@ body {
     transition: .5s ease-out;
 }
 
+#set_btn_1{
+    transition: .5s ease-out;
+}
+
 .wc_ltr {
     font-size: 40px;
     font-family: 'Poppins-Regular';
+}
+
+.wc_ltr.medium{
+    font-size: 30px;
 }
 
 .wc_ltr_v2 {
@@ -220,17 +273,39 @@ body {
     font-family: 'Poppins-Regular';
 }
 
+.wc_ltr_v2.small{
+    font-size: 15px;
+    font-family: 'Poppins-Regular';
+}
+
+.tag{
+    margin-top: 5px;
+}
+
 .tg_ln {
     font-family: 'Poppins-Regular';
     font-size: 12.5px;
+    transition: .5s ease;
 }
+
+.tg_ln.small{
+    font-size: 11px;
+    transition: .5s ease;
+}
+
+.txt_center{
+    text-align: center;
+}
+
 .tg_ln_v2 {
     font-family: 'Poppins-Bold';
     font-size: 13.5px;
+    transition: .5s ease;
 }
 .tg_ln_v3 {
     font-family: 'Poppins-Bold';
     font-size: 15.5px;
+    transition: .5s ease;
 }
 
 .btn_1 {
@@ -285,6 +360,10 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.flex.arr{
+    justify-content: space-around;
 }
 
 .flex_v2 {
@@ -614,7 +693,7 @@ input {
 
 /* user page */
 
-#user-page{
+.min{
     min-height: 620px;
 }
 
@@ -654,6 +733,12 @@ li {
 .i {
     font-size: 18px;
     color: #6e6e6e;
+}
+
+i.large{
+    font-size: 22px;
+    color: #808080;
+    transition: 0.5s ease;
 }
 
 i.active {
@@ -865,4 +950,118 @@ a.active {
 
 .btn_1.full{
     width: 100%;
+}
+
+#option_box{
+    margin-top: 60px;
+    height: 100px;
+    width: 650px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 45px 0px 45px;
+    transition: 0.5s ease;
+}
+
+#option_box.deac{
+    margin-top: 45px;
+    transition: 0.5s ease;
+}
+
+#option_box p{
+    margin-top: 10px;
+}
+
+#option_box li{
+    height: 100%;
+}
+
+#option_box a{
+    height: 100%;
+    width: 65px;
+    justify-content: center;
+    border-bottom: 3px solid transparent;
+}
+
+#option_box a.active_hm_link{
+    border-bottom: 3px solid #FF6E00;
+}
+
+#option_box ul{
+    width: 100%;
+    height: 100%;
+}
+
+#display_2{
+    height: auto;
+    width: 100%;
+}
+
+.home_log{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.home_log.active{
+    margin-bottom: 35px;
+}
+
+.center_center{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.line{
+    height: 1px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.tg_ln.active{
+    color: #FF6E00;
+    transition: .5s ease;
+}
+
+.box_us{
+    height: 320px;
+    width: 470px;
+    border-radius: 20px;
+}
+
+.btn_box{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+    justify-content: space-around;
+}
+
+.btn_box.auto{
+    width: auto;
+    height: auto;
+    padding-top: 15px;
+    box-sizing: border-box;
+}
+
+.btn_box button{
+    width: 150px;
+    height: 40px;
+    font-family: 'Poppins-Regular';
+    border-radius: 5px;
+}
+
+.btn_box button.full{
+    width: 100%;
+}
+
+.btn_borderless{
+    border: none;
+}
+
+.btn_border{
+    border: 2px solid #FF6E00;
 }

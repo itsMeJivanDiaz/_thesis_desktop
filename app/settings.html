@@ -1,0 +1,85 @@
+<div id="settings" class="flex arr">
+    <div class="box_us bg_6 center_center o-pad top">
+        <img class="image_logo borderless small" src="../assets/images/settings_image.png">
+        <p class="wc_ltr_v2 small txt_center bold fnt_clr_1">Set Allowed Capacity</p>
+        <p class="tag tg_ln small">Based on Current Community Quarantine Status</p>
+        <section class="line bg_7"></section>
+        <br>
+        <form id="form_quarantine">
+            <input class="acc_id" value="" name="id" hidden readonly>
+            <div class="flex_v2 edit-box">
+                <label class="fnt_clr_2 tg_ln">
+                   Normal Venue Capacity
+                </label>
+                <div class="spacer_v2"></div>
+                <div class="input-holder_v2">
+                    <input type="number" required name="cap" class="st_input" id="normal" value="">
+                </div>
+            </div>
+            <div class="flex_v2 edit-box">
+                <label class="fnt_clr_2 tg_ln">
+                   Community Quarantine Status
+                </label>            
+                <div class="spacer_v2"></div>
+                <div class="input-holder_v2">
+                    <select required class="st_input" name="lim" id="limit">
+                        <option selected value="">choose status type</option>
+                        <option value=".1">ECQ</option>
+                        <option value=".7">GCQ</option>
+                        <option value=".5">MECQ</option>
+                        <option value=".9">MGCQ</option>
+                    </select>
+                </div>
+            </div>
+            <div class="btn_box auto">
+                <button id="set_btn_1" type="submit" class="full hover_shdw fnt_clr_3 bg_9 btn_borderless" >Proceed</button>
+            </div>
+        </form>
+    </div>  
+</div>
+<script>
+    $(document).ready(function(){
+
+        $('.acc_id').attr('value', sessionStorage.getItem('acc_id'));
+        
+        $('.st_input').on('keydown', function(){
+            $('#set_btn_1').html('Proceed');
+        })
+
+        $('#form_quarantine').submit(function(event){
+            $('#set_btn_1').html('Processing Request &nbsp;&nbsp;<i class="fas fa-wrench"></i>');
+            $('#set_btn_1').removeClass('hover_shdw')
+            $('#set_btn_1').addClass('unclickable');
+            event.preventDefault();
+            var data = $(this).serialize();
+            $.ajax({
+                method: 'POST',
+                url: 'http://localhost:80/cimo_desktop/app/settings.php',
+                data: data,
+                dataType: 'JSON',
+                success: function(resp){
+                    if(resp.status == 'Success'){
+                        setTimeout(() => {
+                            $('#set_btn_1').removeClass('unclickable');
+                            $('#set_btn_1').addClass('hover_shdw');
+                            $('#set_btn_1').html('Request successful &nbsp;&nbsp;<i class="fas fa-thumbs-up"></i>');
+                            document.getElementById('form_quarantine').reset();
+                        }, 3000);
+                        setTimeout(() => {
+                            $('#set_btn_1').html('Proceed');
+                        }, 5000);
+                    }else{
+                        setTimeout(() => {
+                            $('#set_btn_1').removeClass('unclickable');
+                            $('#set_btn_1').addClass('hover_shdw');
+                            $('#set_btn_1').html('Request error &nbsp;&nbsp;<i class="fas fa-error"></i>');
+                        }, 3000);
+                        setTimeout(() => {
+                            $('#set_btn_1').html('Proceed');
+                        }, 5000);
+                    }
+                }
+            });
+        });
+    });
+</script>

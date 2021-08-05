@@ -1,6 +1,4 @@
 import eel
-import urllib3
-import json
 
 eel.init('D:/xampp/htdocs/cimo_desktop')
 

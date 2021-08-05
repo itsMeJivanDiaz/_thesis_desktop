@@ -1,14 +1,14 @@
-<div id="user-page" class="wrapper flex bg_3">
+<div id="user-page" class="wrapper flex bg_3 min">
     <div id="sidebar" class="bg_6">
         <div class="sidebar-header">
             <img class="image_logo_v2" src="../assets/images/logo.png">
         </div>
         <ul>
             <li>
-                <a class="act active" href="home.html"><i class="active i fas fa-home"></i></a>
+                <a class="act" href="home.html"><i class="i fas fa-home"></i></a>
             </li>
             <li>
-                <a class="act" href="profile.php"><i class=" i fas fa-user"></i></a>
+                <a class="act active" href="profile.html"><i class="active i fas fa-user"></i></a>
             </li>   
             <li>
                 <a class="act" href="credentials.html"><i class=" i fas fa-lock"></i></a>
@@ -30,16 +30,16 @@
             </div>
             <div class="sub-body">
                 <div class="box bg_2 fnt_clr_1">
-                    <p class="box_fnt">Allowed Entries</p>
-                    <p id="allowed" class="wc_ltr_v2 fnt_clr_6"></p>
+                    <p class="box_fnt">Normal Capacity</p>
+                    <p id="normal_cap" class="wc_ltr_v2 fnt_clr_6"></p>
                 </div>
                 <div class="box bg_10 fnt_clr_1">
-                    <p class="box_fnt">Available Entries</p>
-                    <p id="available" class="wc_ltr_v2 fnt_clr_6"></p>
+                    <p class="box_fnt">Limited (W)</p>
+                    <p id="limited_w" class="wc_ltr_v2 fnt_clr_6"></p>
                 </div>
                 <div class="box bg_3 fnt_clr_1">
-                    <p class="box_fnt">Current Entries</p>
-                    <p id="current" class="wc_ltr_v2 fnt_clr_6">0</p>
+                    <p class="box_fnt">Limited (%)</p>
+                    <p id="limited_p" class="wc_ltr_v2 fnt_clr_6"></p>
                 </div>
             </div>
         </div>
@@ -60,12 +60,12 @@
             $('.est_name').html(sessionStorage.getItem('name'));
             $('#branch').html(sessionStorage.getItem('branch'));
             $('#city').html(sessionStorage.getItem('city') + ' City, ' + sessionStorage.getItem('brgy') + ' Area');
-            $('#allowed').html(sessionStorage.getItem('allowable'));
-            $('#available').html(sessionStorage.getItem('allowable') - sessionStorage.getItem('current_count'));
-            $('#current').html(sessionStorage.getItem('current_count'));
+            $('#limited_w').html(sessionStorage.getItem('allowable'));
+            $('#normal_cap').html(sessionStorage.getItem('normal_capacity'));
+            $('#limited_p').html((sessionStorage.getItem('allowable') / sessionStorage.getItem('normal_capacity')) * 100 + '%');
         }
 
-        var url = 'home.html';
+        var url = 'profile.html';
 
         get(url);
 
@@ -79,9 +79,15 @@
         })
 
         function get(url){
-            $.get(url, function(data){
-                $('#main-content').html(data);
-            });
+            if(url == 'home.html'){
+                $.get(url, function(data){
+                    $('#display').html(data);
+                });
+            }else{
+                $.get(url, function(data){
+                    $('#main-content').html(data);
+                });
+            }
         }
     })
 </script>
