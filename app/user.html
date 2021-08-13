@@ -29,7 +29,7 @@
                 <p id="city" class="tg_ln fnt_clr_1"></p>
             </div>
             <div class="sub-body">
-                <div class="box bg_2 fnt_clr_1">
+                <div class="box bg_11 fnt_clr_1">
                     <p class="box_fnt">Normal Capacity</p>
                     <p id="normal_cap" class="wc_ltr_v2 fnt_clr_6"></p>
                 </div>
@@ -62,7 +62,11 @@
             $('#city').html(sessionStorage.getItem('city') + ' City, ' + sessionStorage.getItem('brgy') + ' Area');
             $('#limited_w').html(sessionStorage.getItem('allowable'));
             $('#normal_cap').html(sessionStorage.getItem('normal_capacity'));
-            $('#limited_p').html((sessionStorage.getItem('allowable') / sessionStorage.getItem('normal_capacity')) * 100 + '%');
+            if(isNaN((sessionStorage.getItem('allowable') / sessionStorage.getItem('normal_capacity')) * 100)){
+                $('#limited_p').html('%');
+            }else{
+                $('#limited_p').html((sessionStorage.getItem('allowable') / sessionStorage.getItem('normal_capacity')) * 100 + '%');
+            }
         }
 
         var url = 'profile.html';

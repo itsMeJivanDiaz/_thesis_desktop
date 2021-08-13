@@ -1,265 +1,265 @@
 {
     "Commissary" : {
-        "ECQ" : "can't operate",
+        "ECQ" : "can not operate",
         "MECQ" : "0.1",
         "GCQ-HR" : "0.20",
         "GCQ" : "0.50",
         "MGCQ" : "1"
     },
     "Restaurant" : {
-        "ECQ" : "can't operate",
+        "ECQ" : "can not operate",
         "MECQ" : "0.1",
         "GCQ-HR" : "0.20",
         "GCQ" : "0.50",
         "MGCQ" : "1"
     },
     "Eateries" : {
-        "ECQ" : "can't operate",
+        "ECQ" : "can not operate",
         "MECQ" : "0.1",
         "GCQ-HR" : "0.20",
         "GCQ" : "0.50",
         "MGCQ" : "1"
     },
     "Beauty Salon" : {
-        "ECQ" : "can't operate",
+        "ECQ" : "can not operate",
         "MECQ" : "0.3",
         "GCQ-HR" : "0.3",
         "GCQ" : "0.50",
         "MGCQ" : "1"
     },
     "Beauty Parlor" : {
-        "ECQ" : "can't operate",
+        "ECQ" : "can not operate",
         "MECQ" : "0.3",
         "GCQ-HR" : "0.3",
         "GCQ" : "0.50",
         "MGCQ" : "1"
     },
     "Barber Shop" : {
-        "ECQ" : "can't operate",
+        "ECQ" : "can not operate",
         "MECQ" : "0.3",
         "GCQ-HR" : "0.3",
         "GCQ" : "0.50",
         "MGCQ" : "1"
     },
     "Nail Spa" : {
-        "ECQ" : "can't operate",
+        "ECQ" : "can not operate",
         "MECQ" : "0.3",
         "GCQ-HR" : "0.3",
         "GCQ" : "0.50",
         "MGCQ" : "1"
     },
     "Medical Aesthetic Clinics" : {
-        "ECQ" : "can't operate",
-        "MECQ" : "can't operate",
-        "GCQ-HR" : "can't operate",
+        "ECQ" : "can not operate",
+        "MECQ" : "can not operate",
+        "GCQ-HR" : "can not operate",
         "GCQ" : "0.50",
         "MGCQ" : "1"
     },
     "Cosmetic / Derma Clinic" : {
-        "ECQ" : "can't operate",
-        "MECQ" : "can't operate",
-        "GCQ-HR" : "can't operate",
+        "ECQ" : "can not operate",
+        "MECQ" : "can not operate",
+        "GCQ-HR" : "can not operate",
         "GCQ" : "0.50",
         "MGCQ" : "1"
     },
     "Make-Up" : {
-        "ECQ" : "can't operate",
-        "MECQ" : "can't operate",
-        "GCQ-HR" : "can't operate",
+        "ECQ" : "can not operate",
+        "MECQ" : "can not operate",
+        "GCQ-HR" : "can not operate",
         "GCQ" : "0.50",
         "MGCQ" : "1"
     },
     "Reflexology" : {
-        "ECQ" : "can't operate",
-        "MECQ" : "can't operate",
-        "GCQ-HR" : "can't operate",
+        "ECQ" : "can not operate",
+        "MECQ" : "can not operate",
+        "GCQ-HR" : "can not operate",
         "GCQ" : "0.50",
         "MGCQ" : "1"
     },
     "Aesthetics" : {
-        "ECQ" : "can't operate",
-        "MECQ" : "can't operate",
-        "GCQ-HR" : "can't operate",
+        "ECQ" : "can not operate",
+        "MECQ" : "can not operate",
+        "GCQ-HR" : "can not operate",
         "GCQ" : "0.50",
         "MGCQ" : "1"
     },
     "Wellness / Holistic Center" : {
-        "ECQ" : "can't operate",
-        "MECQ" : "can't operate",
-        "GCQ-HR" : "can't operate",
+        "ECQ" : "can not operate",
+        "MECQ" : "can not operate",
+        "GCQ-HR" : "can not operate",
         "GCQ" : "0.50",
         "MGCQ" : "1"
     },
     "Acupunture / Electro Cautery" : {
-        "ECQ" : "can't operate",
-        "MECQ" : "can't operate",
-        "GCQ-HR" : "can't operate",
+        "ECQ" : "can not operate",
+        "MECQ" : "can not operate",
+        "GCQ-HR" : "can not operate",
         "GCQ" : "0.50",
         "MGCQ" : "1"
     },
     "Massage / Sports Therapy" : {
-        "ECQ" : "can't operate",
-        "MECQ" : "can't operate",
-        "GCQ-HR" : "can't operate",
+        "ECQ" : "can not operate",
+        "MECQ" : "can not operate",
+        "GCQ-HR" : "can not operate",
         "GCQ" : "0.50",
         "MGCQ" : "1"
     },
     "Tanning Service / Body Pierce Service / Tattoo Service" : {
-        "ECQ" : "can't operate",
-        "MECQ" : "can't operate",
-        "GCQ-HR" : "can't operate",
+        "ECQ" : "can not operate",
+        "MECQ" : "can not operate",
+        "GCQ-HR" : "can not operate",
         "GCQ" : "0.50",
         "MGCQ" : "1"
     },
     "Tourists Attraction" : {
-        "ECQ" : "can't operate",
-        "MECQ" : "can't operate",
-        "GCQ-HR" : "can't operate",
+        "ECQ" : "can not operate",
+        "MECQ" : "can not operate",
+        "GCQ-HR" : "can not operate",
         "GCQ" : "0.50",
         "MGCQ" : "0.75"
     },
     "Karaoke Bar" : {
-        "ECQ" : "can't operate",
-        "MECQ" : "can't operate",
-        "GCQ-HR" : "can't operate",
-        "GCQ" : "can't operate",
-        "MGCQ" : "can't operate"
+        "ECQ" : "can not operate",
+        "MECQ" : "can not operate",
+        "GCQ-HR" : "can not operate",
+        "GCQ" : "can not operate",
+        "MGCQ" : "can not operate"
     },
     "Bar" : {
-        "ECQ" : "can't operate",
-        "MECQ" : "can't operate",
-        "GCQ-HR" : "can't operate",
-        "GCQ" : "can't operate",
-        "MGCQ" : "can't operate"
+        "ECQ" : "can not operate",
+        "MECQ" : "can not operate",
+        "GCQ-HR" : "can not operate",
+        "GCQ" : "can not operate",
+        "MGCQ" : "can not operate"
     },
     "Club" : {
-        "ECQ" : "can't operate",
-        "MECQ" : "can't operate",
-        "GCQ-HR" : "can't operate",
-        "GCQ" : "can't operate",
-        "MGCQ" : "can't operate"
+        "ECQ" : "can not operate",
+        "MECQ" : "can not operate",
+        "GCQ-HR" : "can not operate",
+        "GCQ" : "can not operate",
+        "MGCQ" : "can not operate"
     },
     "Concert Hall" : {
-        "ECQ" : "can't operate",
-        "MECQ" : "can't operate",
-        "GCQ-HR" : "can't operate",
-        "GCQ" : "can't operate",
-        "MGCQ" : "can't operate"
+        "ECQ" : "can not operate",
+        "MECQ" : "can not operate",
+        "GCQ-HR" : "can not operate",
+        "GCQ" : "can not operate",
+        "MGCQ" : "can not operate"
     },
     "Theater" : {
-        "ECQ" : "can't operate",
-        "MECQ" : "can't operate",
-        "GCQ-HR" : "can't operate",
-        "GCQ" : "can't operate",
-        "MGCQ" : "can't operate"
+        "ECQ" : "can not operate",
+        "MECQ" : "can not operate",
+        "GCQ-HR" : "can not operate",
+        "GCQ" : "can not operate",
+        "MGCQ" : "can not operate"
     },
     "Cinema" : {
-        "ECQ" : "can't operate",
-        "MECQ" : "can't operate",
-        "GCQ-HR" : "can't operate",
-        "GCQ" : "can't operate",
+        "ECQ" : "can not operate",
+        "MECQ" : "can not operate",
+        "GCQ-HR" : "can not operate",
+        "GCQ" : "can not operate",
         "MGCQ" : "0.50"
     },
     "Meeting Venue" : {
-        "ECQ" : "can't operate",
-        "MECQ" : "can't operate",
-        "GCQ-HR" : "can't operate",
+        "ECQ" : "can not operate",
+        "MECQ" : "can not operate",
+        "GCQ-HR" : "can not operate",
         "GCQ" : "0.50",
         "MGCQ" : "0.75"
     },
     "Internet Cafe" : {
-        "ECQ" : "can't operate",
-        "MECQ" : "can't operate",
-        "GCQ-HR" : "can't operate",
-        "GCQ" : "can't operate",
+        "ECQ" : "can not operate",
+        "MECQ" : "can not operate",
+        "GCQ-HR" : "can not operate",
+        "GCQ" : "can not operate",
         "MGCQ" : "0.50"
     },
     "Billiard Hall" : {
-        "ECQ" : "can't operate",
-        "MECQ" : "can't operate",
-        "GCQ-HR" : "can't operate",
-        "GCQ" : "can't operate",
+        "ECQ" : "can not operate",
+        "MECQ" : "can not operate",
+        "GCQ-HR" : "can not operate",
+        "GCQ" : "can not operate",
         "MGCQ" : "0.50"
     },
     "Amusement Arcade" : {
-        "ECQ" : "can't operate",
-        "MECQ" : "can't operate",
-        "GCQ-HR" : "can't operate",
-        "GCQ" : "can't operate",
+        "ECQ" : "can not operate",
+        "MECQ" : "can not operate",
+        "GCQ-HR" : "can not operate",
+        "GCQ" : "can not operate",
         "MGCQ" : "0.50"
     },
     "Bowling Alley" : {
-        "ECQ" : "can't operate",
-        "MECQ" : "can't operate",
-        "GCQ-HR" : "can't operate",
-        "GCQ" : "can't operate",
+        "ECQ" : "can not operate",
+        "MECQ" : "can not operate",
+        "GCQ-HR" : "can not operate",
+        "GCQ" : "can not operate",
         "MGCQ" : "0.50"
     },
     "Playground" : {
-        "ECQ" : "can't operate",
-        "MECQ" : "can't operate",
-        "GCQ-HR" : "can't operate",
-        "GCQ" : "can't operate",
-        "MGCQ" : "can't operate"
+        "ECQ" : "can not operate",
+        "MECQ" : "can not operate",
+        "GCQ-HR" : "can not operate",
+        "GCQ" : "can not operate",
+        "MGCQ" : "can not operate"
     },
     "Playroom" : {
-        "ECQ" : "can't operate",
-        "MECQ" : "can't operate",
-        "GCQ-HR" : "can't operate",
-        "GCQ" : "can't operate",
-        "MGCQ" : "can't operate"
+        "ECQ" : "can not operate",
+        "MECQ" : "can not operate",
+        "GCQ-HR" : "can not operate",
+        "GCQ" : "can not operate",
+        "MGCQ" : "can not operate"
     },
     "Kiddie ride" : {
-        "ECQ" : "can't operate",
-        "MECQ" : "can't operate",
-        "GCQ-HR" : "can't operate",
-        "GCQ" : "can't operate",
-        "MGCQ" : "can't operate"
+        "ECQ" : "can not operate",
+        "MECQ" : "can not operate",
+        "GCQ-HR" : "can not operate",
+        "GCQ" : "can not operate",
+        "MGCQ" : "can not operate"
     },
     "Amusement Park" : {
-        "ECQ" : "can't operate",
-        "MECQ" : "can't operate",
-        "GCQ-HR" : "can't operate",
-        "GCQ" : "can't operate",
+        "ECQ" : "can not operate",
+        "MECQ" : "can not operate",
+        "GCQ-HR" : "can not operate",
+        "GCQ" : "can not operate",
         "MGCQ" : "0.75"
     },
     "Indoor non-contact sports court" : {
-        "ECQ" : "can't operate",
-        "MECQ" : "can't operate",
-        "GCQ-HR" : "can't operate",
+        "ECQ" : "can not operate",
+        "MECQ" : "can not operate",
+        "GCQ-HR" : "can not operate",
         "GCQ" : "0.50",
         "MGCQ" : "1"
     },
     "Fitness Studio" : {
-        "ECQ" : "can't operate",
-        "MECQ" : "can't operate",
-        "GCQ-HR" : "can't operate",
+        "ECQ" : "can not operate",
+        "MECQ" : "can not operate",
+        "GCQ-HR" : "can not operate",
         "GCQ" : "0.50",
         "MGCQ" : "1"
     },
     "Gym" : {
-        "ECQ" : "can't operate",
-        "MECQ" : "can't operate",
-        "GCQ-HR" : "can't operate",
+        "ECQ" : "can not operate",
+        "MECQ" : "can not operate",
+        "GCQ-HR" : "can not operate",
         "GCQ" : "0.50",
         "MGCQ" : "1"
     },
     "Swimming Pool" : {
-        "ECQ" : "can't operate",
-        "MECQ" : "can't operate",
-        "GCQ-HR" : "can't operate",
+        "ECQ" : "can not operate",
+        "MECQ" : "can not operate",
+        "GCQ-HR" : "can not operate",
         "GCQ" : "0.50",
         "MGCQ" : "1"
     },
     "Cockpits" : {
-        "ECQ" : "can't operate",
-        "MECQ" : "can't operate",
-        "GCQ-HR" : "can't operate",
-        "GCQ" : "can't operate",
-        "MGCQ" : "can't operate"
+        "ECQ" : "can not operate",
+        "MECQ" : "can not operate",
+        "GCQ-HR" : "can not operate",
+        "GCQ" : "can not operate",
+        "MGCQ" : "can not operate"
     },
     "Religious Gathering Venue" : {
-        "ECQ" : "can't operate",
+        "ECQ" : "can not operate",
         "MECQ" : "0.1",
         "GCQ-HR" : "0.1",
         "GCQ" : "0.3",

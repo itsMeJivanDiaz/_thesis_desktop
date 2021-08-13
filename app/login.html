@@ -1,7 +1,7 @@
 <div  class="bg_3 load_wrapper">
     <img class="image_logo" src="../assets/images/logo.png">
     <h1 class="wc_ltr fnt_clr_4">CIMO</h1>
-    <p id="request_stats" class="fnt_clr_7 tg_ln">Loading</p>
+    <p id="request_stats" class="txt_center fnt_clr_2 tg_ln_v2">Loading</p>
     <div class="lds-ellipsis">
         <div>
         </div>
@@ -60,6 +60,14 @@
                             </div>
                             <div class="input-holder">
                                 <section class="icon-box">
+                                    <i class="fas fa-store text-shadow-dark"></i>
+                                </section>
+                                <select required autocomplete="off" name="type" class="fnt_clr_2" id="establishment-type">
+                                    <option value="" selected class="color-3">Establishment Type</option>
+                                </select>
+                            </div>
+                            <div class="input-holder">
+                                <section class="icon-box">
                                     <i class="fas fa-city text-shadow-dark"></i>
                                 </section>
                                 <input required autocomplete="off" name="city" id="city" class="fnt_clr_2" placeholder="City" >
@@ -87,27 +95,22 @@
                                 <button type="button" id="location"><i class="loc fas fa-map-marked-alt text-shadow-dark"></i></button>
                             </div>
                             <div class="input-holder">
-                                <section class="icon-box">
-                                    <i class="fas fa-store text-shadow-dark"></i>
-                                </section>
-                                <select required autocomplete="off" name="type" class="fnt_clr_2" id="establishment-type">
-                                    <option value="" selected class="color-3">Establishment Type</option>
-                                    <option value="Fast food">Fast Food</option>
-                                    <option value="Supermarket">Supermarket</option>
-                                    <option value="Spplies">Supplies</option>
-                                </select>
-                            </div>
-                            <div class="input-holder">
                                 <section class="icon-box text-shadow-dark">
                                     <i class="fas fa-user-tag"></i>
                                 </section>
-                                <input required autocomplete="off" name="username" id="user" class="fnt_clr_2" placeholder="Establishment Usercode">
+                                <input required autocomplete="off" name="username" id="user" class="fnt_clr_2" placeholder="Usercode">
                             </div>
                             <div class="input-holder">
                                 <section class="icon-box text-shadow-dark">
                                     <i class="fas fa-lock"></i>
                                 </section>
-                                <input required type="password" autocomplete="off" name="password" id="pass" class="fnt_clr_2" placeholder="Establishment Passcode">
+                                <input required type="password" autocomplete="off" name="password" id="pass" class="fnt_clr_2" placeholder="Passcode (minimum 12 characters)">
+                            </div>
+                            <div class="input-holder">
+                                <section class="icon-box text-shadow-dark">
+                                    <i class="fas fa-lock"></i>
+                                </section>
+                                <input required type="password" autocomplete="off" name="password_confirm" id="pass_con" class="fnt_clr_2" placeholder="Confirm Passcode">
                             </div>
                             <button id="reg_btn" type="submit" class="btn_1 fnt_clr_3 bg_9">
                                 Proceed
@@ -132,13 +135,13 @@
                             <section class="icon-box text-shadow-dark">
                                 <i class="fas fa-user-tag"></i>
                             </section>
-                            <input value="mcdo" required autocomplete="off" name="user-login" class="font-3" placeholder="Establishment Usercode">
+                            <input value="bs1" required autocomplete="off" name="user-login" class="font-3" placeholder="Usercode">
                         </div>
                         <div class="input-holder">
                             <section class="icon-box text-shadow-dark">
                                 <i class="fas fa-lock"></i>
                             </section>
-                            <input value="mcdo" required type="password" autocomplete="off" name="pass-login" class="font-3" placeholder="Establishment Passcode">
+                            <input value="battlestation1" required type="password" autocomplete="off" name="pass-login" class="font-3" placeholder="Passcode">
                         </div>
                         <button id="Log_btn" type="submit" class="btn_1 fnt_clr_3 bg_9">
                             Proceed
@@ -156,6 +159,14 @@
 <script>
 
     $(document).ready(function(){
+
+        // fethc IATF guidelines
+
+        $.getJSON('iatf_guide.json', function(data){
+            $.each(data, function(key, value){
+                $('#establishment-type').append('<option value="'+key+'">'+key+'</option>')
+            })
+        })
 
         // map on
 
@@ -255,40 +266,58 @@
 
         // registration
 
+        function request(message){
+            $('#request_stats').html(message);
+            $('.lds-ellipsis').addClass('deac')
+            $('.lds-ellipsis div').addClass('deac')
+            $('#ld_btn').addClass('active')
+        }
+
         $('#reg-form-id').submit(function(e){
             e.preventDefault()
             $('.load_wrapper').removeClass('deac');
             $('#request_stats').html('Creating your account');
-            var data = $(this).serialize()
-            $.ajax({
-                method: 'POST',
-                data: data,
-                url: 'http://localhost/cimo_desktop/app/register.php',
-                dataType: 'JSON',
-                success: function(resp){
-                    console.log(resp)
-                    if(resp.status == 'Registration Success'){
-                        setTimeout(function(){
-                            $('#ld_btn').attr('data-from', 'scroll_2')
-                            $('#ld_btn').attr('data-to', 'scroll_3')
-                            $('#request_stats').html('Account creation success!');
-                            $('.lds-ellipsis').addClass('deac')
-                            $('.lds-ellipsis div').addClass('deac')
-                            $('#ld_btn').addClass('active')
-                        }, 3000)
-                    }else{
-                        setTimeout(function(){
-                            $('#ld_btn').attr('data-from', 'scroll_2')
-                            $('#ld_btn').attr('data-to', 'scroll_2')
-                            $('#ld_btn').html('Back');
-                            $('#request_stats').html('Username is taken');
-                            $('.lds-ellipsis').addClass('deac')
-                            $('.lds-ellipsis div').addClass('deac')
-                            $('#ld_btn').addClass('active')
-                        }, 3000)
+            if($('#pass_con').val() != $('#pass').val()){
+                setTimeout(function(){
+                    $('#ld_btn').attr('data-from', 'scroll_2')
+                    $('#ld_btn').attr('data-to', 'scroll_2')
+                    $('#ld_btn').html('Back');
+                    request('Password does not match &nbsp;&nbsp;<i class="fas fa-exclamation-triangle"></i>')
+                }, 3000)
+            }else if($('#pass').val().length < 12){
+                setTimeout(function(){
+                    $('#ld_btn').attr('data-from', 'scroll_2')
+                    $('#ld_btn').attr('data-to', 'scroll_2')
+                    $('#ld_btn').html('Back');
+                    request('Password does not meet minimum requirement <br> of 12 characters &nbsp;&nbsp;<i class="fas fa-exclamation-triangle"></i>')
+                }, 3000)
+            }else{
+                var data = $(this).serialize()
+                console.log(data)
+                $.ajax({
+                    method: 'POST',
+                    data: data,
+                    url: 'http://localhost/cimo_desktop/app/register.php',
+                    dataType: 'JSON',
+                    success: function(resp){
+                        console.log(resp)
+                        if(resp.status == 'Registration Success'){
+                            setTimeout(function(){
+                                $('#ld_btn').attr('data-from', 'scroll_2')
+                                $('#ld_btn').attr('data-to', 'scroll_3')
+                                request('Account creation success! &nbsp;&nbsp;<i class="fas fa-thumbs-up"></i>')
+                            }, 3000)
+                        }else{
+                            setTimeout(function(){
+                                $('#ld_btn').attr('data-from', 'scroll_2')
+                                $('#ld_btn').attr('data-to', 'scroll_2')
+                                $('#ld_btn').html('Back');
+                                request('Username is taken &nbsp;&nbsp;<i class="fas fa-exclamation-triangle"></i>')
+                            }, 3000)
+                        }
                     }
-                }
-            })
+                })
+            }
         });
 
         // log in
@@ -319,6 +348,7 @@
                             sessionStorage.setItem('brgy', resp.brgy);
                             sessionStorage.setItem('lat', resp.lat);
                             sessionStorage.setItem('long', resp.long);
+                            sessionStorage.setItem('window_status', 0);
                             $('#Login-page').addClass('deac');
                             setTimeout(function(){
                                 $.get('home.html', function(data){
@@ -331,10 +361,7 @@
                             $('#ld_btn').attr('data-from', 'scroll_3')
                             $('#ld_btn').attr('data-to', 'scroll_3')
                             $('#ld_btn').html('Back');
-                            $('#request_stats').html('Account does not exist');
-                            $('.lds-ellipsis').addClass('deac')
-                            $('.lds-ellipsis div').addClass('deac')
-                            $('#ld_btn').addClass('active')
+                            request('Account does not exist &nbsp;&nbsp;<i class="fas fa-exclamation-triangle"></i>')
                         }, 3000)
                     }
                 }

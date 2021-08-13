@@ -1,4 +1,4 @@
-def execute(acc_id):
+def execute(acc_id, status):
 
     import cv2 as cv
     import numpy as np
@@ -7,7 +7,6 @@ def execute(acc_id):
     if len(gpu_devices) > 0:
         tf.config.experimental.set_memory_growth(gpu_devices[0], True)
     import core.utils as utils
-    from core.yolov4 import filter_boxes
     from tensorflow.python.saved_model import tag_constants
     from core.config import cfg
     from PIL import Image
@@ -19,13 +18,13 @@ def execute(acc_id):
     import imutils
     from trackable import Tracking
     import eel
-    import urllib, urllib3
+    import urllib3
     import json
 
     def update(account, count, capacity):
 
         http = urllib3.PoolManager()
-        query = http.request('POST', 'http://localhost/cimo/web/update_count.php', fields={
+        query = http.request('POST', 'http://localhost/cimo_desktop/app/update_count.php', fields={
             'account': account,
             'count': count,
             'cap': capacity
@@ -66,7 +65,7 @@ def execute(acc_id):
     if capacity_threshold == 0:
 
         http = urllib3.PoolManager()
-        query = http.request('POST', 'http://localhost/cimo/web/get_settings.php', fields={
+        query = http.request('POST', 'http://localhost/cimo_desktop/app/get_settings.php', fields={
             'id': acc_id
         })
 
@@ -84,7 +83,9 @@ def execute(acc_id):
 
     eel.get_data_num(capacity_threshold)
 
-    while True:
+    eel.camera_up(True)
+
+    while status is True:
 
         _, frame = video_src.read()
 
@@ -296,10 +297,12 @@ def execute(acc_id):
 
         cv.imshow('CIMO camera', output_frame)
 
-        if cv.waitKey(10) & 0xff == ord('d'):
+        if cv.waitKey(10) & 0xff == ord('D'):
 
             break
 
+    eel.camera_up(False)
+    session.close()
     cv.destroyAllWindows()
 
 

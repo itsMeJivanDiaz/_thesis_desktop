@@ -5,8 +5,19 @@
         <p class="tag tg_ln small">This will terminate all running processes within the system</p>
         <section class="line bg_7"></section>
         <div class="btn_box">
-            <button class="fnt_clr_3 bg_9 btn_border hover_shdw" >Yes</button>
-            <button class="fnt_clr_6 bg_trans btn_border hover_shdw">No</button>
+            <button id="yes" class="fnt_clr_3 bg_9 btn_border hover_shdw" >Yes</button>
         </div>
     </div>    
 </div>
+<script>
+    $('#yes').click(function(){
+        $(this).removeClass('hover_shdw');
+        $(this).addClass('unclickable');
+        $(this).html('Logging out &nbsp;&nbsp;<i class="fas fa-sign-out-alt"></i>')
+        setTimeout(() => {
+            $.get('login.html', function(data){
+                $('#display').html(data)
+            })
+        }, 3000);
+    })
+</script>

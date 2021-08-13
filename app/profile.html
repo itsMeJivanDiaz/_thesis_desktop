@@ -42,6 +42,17 @@
         </div>
         <div class="flex_v2 edit-box">
             <label class="fnt_clr_2 tg_ln">
+               Establishment type
+            </label>            
+            <div class="spacer_v2"></div>
+            <div class="input-holder_v2">
+                <select class="edit" name="type" id="edit_type">
+                    
+                </select>
+            </div>
+        </div>
+        <div class="flex_v2 edit-box">
+            <label class="fnt_clr_2 tg_ln">
                 Street / Branch
             </label>
             <div class="spacer_v2"></div>
@@ -69,20 +80,6 @@
         </div>
         <div class="flex_v2 edit-box">
             <label class="fnt_clr_2 tg_ln">
-               Establishment type
-            </label>            
-            <div class="spacer_v2"></div>
-            <div class="input-holder_v2">
-                <select class="edit" name="type" id="edit_type">
-                    <option value="Fast food">Fast Food</option>
-                    <option value="Supermarket">Supermarket</option>
-                    <option value="Spplies">Supplies</option>
-                    <option value="Spplies">Medicine</option>
-                </select>
-            </div>
-        </div>
-        <div class="flex_v2 edit-box">
-            <label class="fnt_clr_2 tg_ln">
                Coordinates
             </label>
             <div class="spacer_v2"></div>
@@ -103,6 +100,13 @@
 <script>
     $(document).ready(function(){
 
+        $.getJSON('iatf_guide.json', function(data){
+            $.each(data, function(key, value){
+                $('#edit_type').append('<option value="'+key+'">'+key+'</option>')
+            })
+            $('#edit_type').val(sessionStorage.getItem('type')).change();
+        })
+
         var button_stats = 0;
         var pick_img = 0;
 
@@ -116,7 +120,6 @@
             $('#edit_street').attr('value', sessionStorage.getItem('branch'));
             $('#edit_brgy').attr('value', sessionStorage.getItem('brgy'));
             $('#edit_city').attr('value', sessionStorage.getItem('city'));
-            $('#edit_type').val(sessionStorage.getItem('type')).change();
             if(sessionStorage.getItem('logo') == 'None'){
                 $('.image_logo_edit').attr('src', '../assets/images/logo.png');
             }else{

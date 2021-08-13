@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CIMO Extended Display</title>
+    <link rel="shortcut icon" type="image/png" href="../assets/images/logo.png">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <script src="/eel.js"></script>
+    <script src="../assets/libs/jquery.js"></script>
+    <div class="wrapper min">
+        <div class="body-container flex hover_shdw">
+            <div class="bbox bg_2 content center flex_column al_cntr text-shadow-dark">
+                <p class="fnt_clr_3 wc_ltr  bold">Allowed Capacity</p>
+                <section class="line bg_6 hover_shdw"></section>
+                <p id="cap" class="wc_ltr large fnt_clr_6 text-shadow-dark">0</p>
+            </div>
+            <div class="bbox bg_10 content center flex_column al_cntr text-shadow-dark">
+                <p class="fnt_clr_3 wc_ltr  bold">Available Capacity</p>
+                <section class="line bg_6 hover_shdw"></section>
+                <p id="cur" class="wc_ltr large fnt_clr_6 text-shadow-dark">0</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(window).on('load', function(){
+
+            resizefnc()
+        
+            $(document).on("keydown", disable);
+
+            function resizefnc(){
+                window.resizeTo(1100, 715);
+            }
+
+            function disable(e) { 
+                if (e.keyCode == 116 || e.keyCode == 123 || e.keyCode == 9 ||
+                    e.ctrlKey && e.shiftKey && e.keyCode == 73 || 
+                    e.ctrlKey && (e.keyCode === 85 || e.keyCode === 83 || e.keyCode ===65 ))  {
+                    e.preventDefault(); 
+                }
+            }
+
+            var set = 0;
+            var init = 0;
+            eel.expose(get_data_num);
+            function get_data_num(data){
+                console.log(data)
+                if(set == 0){
+                    set = 1;
+                    init = data;
+                }else{
+                    $('#cap').html(data);
+                    $('#cur').html(init - data)
+                }
+            }
+        })
+
+        $(window).on('unload', function(e){
+            eel.close_window()
+        })
+
+    </script>
+</body>
+</html>

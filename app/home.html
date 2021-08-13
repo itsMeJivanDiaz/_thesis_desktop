@@ -14,26 +14,26 @@
                         <p class="tg_ln fnt_clr_1  small">Camera</p>
                     </a>
                 </li>
-                <li>
-                    <a href="settings" class="vert_center hm_lk">
+                <li class=" ">
+                    <a href="settings" class="vert_center hm_lk non_c">
                         <i class="i fas fa-cog large"></i>
                         <p class="tg_ln fnt_clr_1  small">Settings</p>
                     </a>
                 </li>
-                <li>
-                    <a href="user" class="vert_center hm_lk">
+                 <li class="">
+                    <a href="user" class="vert_center hm_lk non_c">
                         <i class="i fas fa-user large"></i>
                         <p class="tg_ln fnt_clr_1  small">Profile</p>
                     </a>
                 </li>
-                <li>
-                    <a href="display" class="vert_center hm_lk">
+                 <li class="">
+                    <a href="extended" class="vert_center hm_lk non_c">
                         <i class="i fas fa-window-restore large"></i>
                         <p class="tg_ln fnt_clr_1  small">Display</p>
                     </a>
                 </li>
-                <li>
-                    <a href="logout" class="vert_center hm_lk">
+                <li class="">
+                    <a href="logout" class="vert_center hm_lk non_c">
                         <i class="i fas fa-sign-out-alt large"></i>
                         <p class="tg_ln fnt_clr_1  small">Log out</p>
                     </a>
@@ -67,7 +67,7 @@
             }else{
                 setTimeout(() => {
                     $('#option_box').addClass('deac');
-                }, 100);
+                }, 500);
                 $.get(url, function(data){
                     $('#display_2').html(data);
                 });

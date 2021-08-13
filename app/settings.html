@@ -13,7 +13,7 @@
                 </label>
                 <div class="spacer_v2"></div>
                 <div class="input-holder_v2">
-                    <input type="number" required name="cap" class="st_input" id="normal" value="">
+                    <input type="number" required name="cap" class="st_input" id="normal">
                 </div>
             </div>
             <div class="flex_v2 edit-box">
@@ -24,10 +24,11 @@
                 <div class="input-holder_v2">
                     <select required class="st_input" name="lim" id="limit">
                         <option selected value="">choose status type</option>
-                        <option value=".1">ECQ</option>
-                        <option value=".7">GCQ</option>
-                        <option value=".5">MECQ</option>
-                        <option value=".9">MGCQ</option>
+                        <option value="">ECQ</option>
+                        <option value="">GCQ</option>
+                        <option value="">GCQ-HR</option>
+                        <option value="">MECQ</option>
+                        <option value="">MGCQ</option>
                     </select>
                 </div>
             </div>
@@ -40,6 +41,14 @@
 <script>
     $(document).ready(function(){
 
+        $('#limit').change(function(){
+            var e = sessionStorage.getItem('type');
+            var li = $('#limit option:selected').text();
+            $.getJSON('iatf_guide.json', function(data){
+                $('#limit option:selected').val(data[e][li]);
+            })
+        })
+
         $('.acc_id').attr('value', sessionStorage.getItem('acc_id'));
         
         $('.st_input').on('keydown', function(){
@@ -51,35 +60,46 @@
             $('#set_btn_1').removeClass('hover_shdw')
             $('#set_btn_1').addClass('unclickable');
             event.preventDefault();
-            var data = $(this).serialize();
-            $.ajax({
-                method: 'POST',
-                url: 'http://localhost:80/cimo_desktop/app/settings.php',
-                data: data,
-                dataType: 'JSON',
-                success: function(resp){
-                    if(resp.status == 'Success'){
-                        setTimeout(() => {
-                            $('#set_btn_1').removeClass('unclickable');
-                            $('#set_btn_1').addClass('hover_shdw');
-                            $('#set_btn_1').html('Request successful &nbsp;&nbsp;<i class="fas fa-thumbs-up"></i>');
-                            document.getElementById('form_quarantine').reset();
-                        }, 3000);
-                        setTimeout(() => {
-                            $('#set_btn_1').html('Proceed');
-                        }, 5000);
-                    }else{
-                        setTimeout(() => {
-                            $('#set_btn_1').removeClass('unclickable');
-                            $('#set_btn_1').addClass('hover_shdw');
-                            $('#set_btn_1').html('Request error &nbsp;&nbsp;<i class="fas fa-error"></i>');
-                        }, 3000);
-                        setTimeout(() => {
-                            $('#set_btn_1').html('Proceed');
-                        }, 5000);
+            if($('#limit').val() == 'can not operate'){
+                setTimeout(() => {
+                    $('#set_btn_1').removeClass('unclickable');
+                    $('#set_btn_1').addClass('hover_shdw');
+                    $('#set_btn_1').html('Status violates IATF guidelines &nbsp;&nbsp;<i class="fas fa-ban"></i>');
+                    document.getElementById('form_quarantine').reset();
+                }, 3000);
+            }else{
+                var data = $(this).serialize();
+                sessionStorage.setItem('normal_capacity', $('#normal').val())
+                                sessionStorage.setItem('allowable', $('#normal').val() * $('#limit').val())
+                $.ajax({
+                    method: 'POST',
+                    url: 'http://localhost:80/cimo_desktop/app/settings.php',
+                    data: data,
+                    dataType: 'JSON',
+                    success: function(resp){
+                        if(resp.status == 'Success'){
+                            setTimeout(() => {
+                                $('#set_btn_1').removeClass('unclickable');
+                                $('#set_btn_1').addClass('hover_shdw');
+                                $('#set_btn_1').html('Request successful &nbsp;&nbsp;<i class="fas fa-thumbs-up"></i>');
+                                document.getElementById('form_quarantine').reset();
+                            }, 3000);
+                            setTimeout(() => {
+                                $('#set_btn_1').html('Proceed');
+                            }, 5000);
+                        }else{
+                            setTimeout(() => {
+                                $('#set_btn_1').removeClass('unclickable');
+                                $('#set_btn_1').addClass('hover_shdw');
+                                $('#set_btn_1').html('Request error &nbsp;&nbsp;<i class="fas fa-error"></i>');
+                            }, 3000);
+                            setTimeout(() => {
+                                $('#set_btn_1').html('Proceed');
+                            }, 5000);
+                        }
                     }
-                }
-            });
+                });
+            }
         });
     });
 </script>
