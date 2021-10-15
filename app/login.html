@@ -49,72 +49,123 @@
                 <div id="form" class="bg_6">
                     <form id="reg-form-id">
                         <div class="form_header">
-                            <h1 class="wc_ltr_v2 fnt_clr_6">Registration Form</h1>
+                            <h1 class="wc_ltr_v2 fnt_clr_6">Establishment Registration Form</h1>
                         </div>
                         <div class="form-body">
-                            <div class="input-holder">
-                                <section class="icon-box">
-                                    <i class="fas fa-building text-shadow-dark"></i>
-                                </section>
-                                <input required autocomplete="off" name="name" class="fnt_clr_2" placeholder="Establishment Name">
-                            </div>
-                            <div class="input-holder">
-                                <section class="icon-box">
-                                    <i class="fas fa-store text-shadow-dark"></i>
-                                </section>
-                                <select required autocomplete="off" name="type" class="fnt_clr_2" id="establishment-type">
-                                    <option value="" selected class="color-3">Establishment Type</option>
-                                </select>
-                            </div>
-                            <div class="input-holder">
-                                <section class="icon-box">
-                                    <i class="fas fa-city text-shadow-dark"></i>
-                                </section>
-                                <input required autocomplete="off" name="city" id="city" class="fnt_clr_2" placeholder="City" >
-                            </div>
-                            <div class="flex">
+                            <section class="form_ ">
+                                <p class="tg_ln fnt_clr_2">- Tell us about your Establishment.</p>
+                                <p class="tg_ln fnt_clr_2 warning">- Missing inputs are required</p>
+                                <br>
                                 <div class="input-holder">
                                     <section class="icon-box">
-                                        <i class="fas fa-road text-shadow-dark"></i>
-                                    </section>
-                                    <input required autocomplete="off" name="branch" id="branch" class="fnt_clr_2" placeholder="Street or Branch" >
+                                        <i class="fas fa-building text-shadow-dark"></i>
+                                    </section> 
+                                    <input id="est_name" required autocomplete="off" name="name" class="fnt_clr_2 g1" placeholder="Establishment Name">
                                 </div>
-                                <div class="spacer"></div>
+                                <div class="input-holder">
+                                    <section class="icon-box">
+                                        <i class="fas fa-vector-square text-shadow-dark"></i>
+                                    </section>
+                                    <input step="any" id="est_area" type="number" required autocomplete="off" name="area" class="g1 fnt_clr_2" placeholder="Area in Square Meters">
+                                </div>
+                                <div class="input-holder">
+                                    <section class="icon-box">
+                                        <i class="fas fa-store text-shadow-dark"></i>
+                                    </section>
+                                    <select  required autocomplete="off" name="type" class="fnt_clr_2 g1" id="establishment-type">
+                                        <option  selected="selected">Establishment Type</option>
+                                    </select>
+                                </div>
+                            </section>
+                            <section class="form_ dis">
+                                <p class="tg_ln fnt_clr_2">- Where can your Establishment be found?.</p>
+                                <p class="tg_ln fnt_clr_2 warning">- Missing inputs are required</p>
+                                <br>
+                                <div class="input-holder">
+                                    <section class="icon-box">
+                                        <i class="fas fa-globe-asia text-shadow-dark"></i>
+                                    </section>
+                                    <select  required autocomplete="off" name="region" class="fnt_clr_2 g2" id="region">
+                                        <option selected>Select Region</option>
+                                    </select>
+                                </div>
+                                <div class="input-holder">
+                                    <section class="icon-box">
+                                        <i class="fas fa-map text-shadow-dark"></i>
+                                    </section>
+                                    <select  required autocomplete="off" name="province" class="fnt_clr_2 g2" id="province">
+                                        <option selected>Select Province</option>
+                                    </select>
+                                </div>
+                                <div class="input-holder">
+                                    <section class="icon-box">
+                                        <i class="fas fa-city text-shadow-dark"></i>
+                                    </section>
+                                    <select  required autocomplete="off" name="city_munic" class="fnt_clr_2 g2" id="city">
+                                        <option selected>Select City / Municipality</option>
+                                    </select>
+                                </div>
                                 <div class="input-holder">
                                     <section class="icon-box">
                                         <i class="fas fa-sign text-shadow-dark"></i>
                                     </section>
-                                    <input required autocomplete="off" name="brgy" id="brgy" class="fnt_clr_2" placeholder="Barangay or Area" >
+                                    <select  required autocomplete="off" name="barangay" class="fnt_clr_2 g2" id="barangay">
+                                        <option selected>Select Barangay</option>
+                                    </select>
                                 </div>
+                                <div class="input-holder">
+                                    <section class="icon-box">
+                                        <i class="fas fa-road text-shadow-dark"></i>
+                                    </section>
+                                    <input required autocomplete="off" name="street" id="street" class="fnt_clr_2 g2" placeholder="Street" >
+                                </div>
+                                <div class="input-holder">
+                                    <section class="icon-box">
+                                        <i class="fas fa-directions text-shadow-dark"></i>
+                                    </section>
+                                    <input required autocomplete="off" name="area_branch" id="area" class="fnt_clr_2 g2" placeholder="Area or Branch e.g (SM / Robinson)" >
+                                </div>
+                                <div class="input-holder">
+                                    <section class="icon-box">
+                                        <i class="fas fa-map-marker-alt text-shadow-dark"></i>
+                                    </section>
+                                    <input required autocomplete="off" name="latlong" id="loc-input" class="fnt_clr_2 g2" placeholder="Establishment Coordinates">
+                                    <button type="button" id="location"><i class="loc fas fa-map-marked-alt text-shadow-dark"></i></button>
+                                </div>
+                            </section>
+                            <section class="form_ dis">
+                                <p class="tg_ln fnt_clr_2">- Do not let anyone know your Establishment's credentials.</p>
+                                <br>
+                                <div class="input-holder">
+                                    <section class="icon-box text-shadow-dark">
+                                        <i class="fas fa-user-tag"></i>
+                                    </section>
+                                    <input required autocomplete="off" name="username" id="user" class="fnt_clr_2" placeholder="Usercode">
+                                </div>
+                                <div class="input-holder">
+                                    <section class="icon-box text-shadow-dark">
+                                        <i class="fas fa-lock"></i>
+                                    </section>
+                                    <input value="111223344556677" required type="password" autocomplete="off" name="password" id="pass" class="fnt_clr_2" placeholder="Passcode (minimum 12 characters)">
+                                </div>
+                                <div class="input-holder">
+                                    <section class="icon-box text-shadow-dark">
+                                        <i class="fas fa-lock"></i>
+                                    </section>
+                                    <input value="111223344556677" required type="password" autocomplete="off" name="password_confirm" id="pass_con" class="fnt_clr_2" placeholder="Confirm Passcode">
+                                </div>
+                            </section>
+                            <div class="flex_v2 float right">
+                                <button data-op="-" type="button" class="btn_1 fnt_clr_3 bg_9 reg_btn_nav">
+                                    Back
+                                </button>
+                                <button data-op="+" type="button" class="btn_1 fnt_clr_3 bg_9 reg_btn_nav">
+                                    Next
+                                </button>
+                                <button id="reg_btn" type="submit" class="btn_1 fnt_clr_3 bg_9 dis">
+                                    Proceed
+                                </button>
                             </div>
-                            <div class="input-holder">
-                                <section class="icon-box">
-                                    <i class="fas fa-map-marker-alt text-shadow-dark"></i>
-                                </section>
-                                <input required autocomplete="off" name="latlong" id="loc-input" class="fnt_clr_2" placeholder="Establishment Coordinates" readonly>
-                                <button type="button" id="location"><i class="loc fas fa-map-marked-alt text-shadow-dark"></i></button>
-                            </div>
-                            <div class="input-holder">
-                                <section class="icon-box text-shadow-dark">
-                                    <i class="fas fa-user-tag"></i>
-                                </section>
-                                <input required autocomplete="off" name="username" id="user" class="fnt_clr_2" placeholder="Usercode">
-                            </div>
-                            <div class="input-holder">
-                                <section class="icon-box text-shadow-dark">
-                                    <i class="fas fa-lock"></i>
-                                </section>
-                                <input required type="password" autocomplete="off" name="password" id="pass" class="fnt_clr_2" placeholder="Passcode (minimum 12 characters)">
-                            </div>
-                            <div class="input-holder">
-                                <section class="icon-box text-shadow-dark">
-                                    <i class="fas fa-lock"></i>
-                                </section>
-                                <input required type="password" autocomplete="off" name="password_confirm" id="pass_con" class="fnt_clr_2" placeholder="Confirm Passcode">
-                            </div>
-                            <button id="reg_btn" type="submit" class="btn_1 fnt_clr_3 bg_9">
-                                Proceed
-                            </button>
                         </div>
                     </form>
                 </div>
@@ -160,13 +211,175 @@
 
     $(document).ready(function(){
 
+        // populate Address dropdowns
+
+        reg_array = []
+        
+        $.getJSON('address.json', function(data){
+            $.each(data, function(key, value){
+                $('#region').append('<option value="'+key+'">'+value['region_name']+'</option>')
+            })
+        })
+
+        $('#region').change(function(){
+            var region = $(this).val()
+            $(this).css('color', '#616161')
+            $('#province').html('<option value="">'+"Select Province"+'</option>')
+            if(region == ""){
+                
+            }else{
+                $.getJSON('address.json', function(data){
+                    $.each(data[region]['province_list'], function(key, value){
+                        $('#province').append('<option value="'+key+'">'+key+'</option>')
+                    })
+                })  
+            }
+            
+        })
+
+        $('#province').change(function(){
+            $(this).css('color', '#616161')
+            var region = $('#region').val()
+            var province = $(this).val()
+            $('#city').html('<option value="">'+"Select Barangay"+'</option>')
+            if(province == ""){
+               
+            }else{
+                $.getJSON('address.json', function(data){
+                    $.each(data[region]['province_list'][province]['municipality_list'], function(key, value){
+                        if(key.indexOf('CITY') > 0){
+                            $('#city').append('<option value="'+key+'">'+key+'</option>')
+                        }else{
+                            $('#city').append('<option value="'+key+'">'+key+' MUNICIPALITY</option>')
+                        }
+                    })
+                })
+            }
+        })
+
+        $('#city').change(function(){
+            $(this).css('color', '#616161')
+            var region = $('#region').val()
+            var province = $('#province').val()
+            var city = $(this).val()
+            $('#barangay').html('<option value="">'+"Select Barangay"+'</option>')
+            if(city == ""){
+                
+            }else{
+                $.getJSON('address.json', function(data){
+                    $.each(data[region]['province_list'][province]['municipality_list'][city]['barangay_list'], function(key, value){
+                        $('#barangay').append('<option value="'+value.replace('(POB.)', "")+'">'+value.replace('(POB.)', "")+'</option>')
+                    })
+                })
+            }
+        })
+
+        $('#barangay').change(function(){
+            $(this).css('color', '#616161')
+        })
+
         // fethc IATF guidelines
 
         $.getJSON('iatf_guide.json', function(data){
-            $.each(data, function(key, value){
+            $.each(data, function(key, value){ 
                 $('#establishment-type').append('<option value="'+key+'">'+key+'</option>')
             })
         })
+        
+        $('#establishment-type').change(function(){
+            $(this).css('color', '#616161')
+        })
+
+        // reg navitagion
+
+        var eq = 0
+
+        $('.reg_btn_nav').eq(0).css({
+            'opacity' : '0',
+            'pointer-events' : 'none'
+        })
+
+        $('.reg_btn_nav').click(function(){
+
+            var op = $(this).attr('data-op')
+
+            op == "+" ? eq+=1 : eq-=1
+            console.log(eq)
+            if(eq == 0){
+
+                $('.reg_btn_nav').eq(0).css({
+                    'opacity' : '0',
+                    'pointer-events' : 'none'
+                })
+           
+            }else if(eq == 1){
+                array_val = []
+                value = document.querySelectorAll('.g1')
+                var check = input_checker(value)
+                console.log(check[0])
+                if(check[0] == true){
+                    if(check[1] == 2){
+                        $('#establishment-type').css('color', 'red')
+                    }else{
+                        $('.g1').eq(check[1]).addClass('error')
+                    }
+                    $('.warning').eq(eq - 1).addClass('enable')
+                    eq = 0
+                }else{
+                    $('.warning').eq(eq - 1).removeClass('enable')
+                    $('.reg_btn_nav').eq(0).css({
+                        'opacity' : '1',
+                        'pointer-events' : 'auto'
+                    })
+                    baxt()
+                }
+            }
+            if(eq == 2){
+                array_val = []
+                value = document.querySelectorAll('.g2')
+                var check = input_checker(value)
+                if(check[0] == true){
+                    if(check[1] <= 3){
+                        $('.g2').eq(check[1]).css('color', 'red')
+                    }else{
+                        $('.g2').eq(check[1]).addClass('error')
+                    }
+                    $('.warning').eq(eq - 1).addClass('enable')
+                    eq = 1
+                }else{
+                    $('.warning').eq(eq - 1).removeClass('enable')
+                    $('#reg_btn').removeClass('dis')
+                    $('.reg_btn_nav').eq(1).css({
+                        'display' : 'none',
+                    })
+                    baxt()
+                }
+            }else{
+                $('#reg_btn').addClass('dis')
+                $('.reg_btn_nav').eq(1).css({
+                    'display' : 'block',
+                })
+            }
+            baxt()
+        })
+
+        function input_checker(array){
+            array.forEach((element, index, node) => {
+                if(element.value == ""){
+                    array_val.push(false)
+                }else{
+                    array_val.push(true)
+                }
+            });
+            var check = array_val.includes(false)
+            var index = array_val.indexOf(false)
+            return [check, index]
+        }
+
+        function baxt(){
+            $('.form_').addClass('dis')
+            $('.form_').eq(eq).removeClass('dis')
+        }
 
         // map on
 
@@ -187,6 +400,16 @@
         // register animation event
 
         $('.mn_btn').click(function(){
+            eq = 0
+            baxt()
+            $('.reg_btn_nav').eq(0).css({
+                'opacity' : '0',
+                'pointer-events' : 'none'
+            })
+            $('#reg_btn').addClass('dis')
+                $('.reg_btn_nav').eq(1).css({
+                'display' : 'block',
+            })
             var to = $(this).attr('data-to');
             var from = $(this).attr('data-from');
             $('.load_wrapper').addClass('deac');
@@ -230,6 +453,10 @@
         }, 3000);   
 
         // map
+
+        $('#loc-input').click(function(){
+            $('#location').click()
+        })
 
         var marker = {}
         var map = L.map('map').setView([10.639181, 122.977394], 7);
@@ -297,22 +524,29 @@
                 $.ajax({
                     method: 'POST',
                     data: data,
-                    url: 'http://localhost/cimo_desktop/app/register.php',
+                    url: 'http://localhost/cimo_desktop/app/establishment_reg.php',
                     dataType: 'JSON',
                     success: function(resp){
                         console.log(resp)
-                        if(resp.status == 'Registration Success'){
+                        if(resp == 'Registration Success'){
                             setTimeout(function(){
                                 $('#ld_btn').attr('data-from', 'scroll_2')
                                 $('#ld_btn').attr('data-to', 'scroll_3')
                                 request('Account creation success! &nbsp;&nbsp;<i class="fas fa-thumbs-up"></i>')
+                            }, 3000)
+                        }else if(resp == 'Someone already used this username :x'){
+                            setTimeout(function(){
+                                $('#ld_btn').attr('data-from', 'scroll_2')
+                                $('#ld_btn').attr('data-to', 'scroll_2')
+                                $('#ld_btn').html('Back');
+                                request(resp + '&nbsp;&nbsp;<i class="fas fa-exclamation-triangle"></i>')
                             }, 3000)
                         }else{
                             setTimeout(function(){
                                 $('#ld_btn').attr('data-from', 'scroll_2')
                                 $('#ld_btn').attr('data-to', 'scroll_2')
                                 $('#ld_btn').html('Back');
-                                request('Username is taken &nbsp;&nbsp;<i class="fas fa-exclamation-triangle"></i>')
+                                request(resp + '&nbsp;&nbsp;<i class="fas fa-exclamation-triangle"></i>')
                             }, 3000)
                         }
                     }

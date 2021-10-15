@@ -1,14 +1,20 @@
 import eel
+import sys
+import os
+import inspect
+
+current = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+pardir = os.path.dirname(current)
+sys.path.insert(0, pardir)
+
 import main
 
 eel.init('D:/xampp/htdocs/cimo_desktop')
-
 
 # close
 def close_callback_index(route, websockets):
     if not websockets:
         print('Closing websockets! ' + str(websockets))
-        exit()
 
 
 @eel.expose
